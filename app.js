@@ -59,7 +59,25 @@ document.addEventListener('DOMContentLoaded', () => {
     setupTableView();
     setupModal();
     setupConsultation();
+
+    // Handle initial hash
+    handleHashChange();
+
+    // Listen for hash changes (browser back/forward)
+    window.addEventListener('popstate', handleHashChange);
 });
+
+// ===== Hash-based Routing =====
+function handleHashChange() {
+    const hash = window.location.hash.slice(1); // Remove '#'
+    const validViews = ['consult', 'concern', 'filter', 'table'];
+
+    if (hash && validViews.includes(hash)) {
+        switchToView(hash, false);
+    } else {
+        switchToView('landing', false);
+    }
+}
 
 // ===== Update Tab Counts =====
 function updateTabCounts() {
@@ -92,22 +110,28 @@ function setupViewTabs() {
     });
 }
 
-function switchToView(view) {
+function switchToView(view, updateHash = true) {
     const tabs = document.querySelectorAll('.view-tab');
-    
+
     // Update tab active state
     tabs.forEach(t => t.classList.remove('active'));
     const targetTab = document.querySelector(`[data-view="${view}"]`);
     if (targetTab) targetTab.classList.add('active');
-    
+
     // Update view panel
     document.querySelectorAll('.view-panel').forEach(p => {
         p.classList.remove('active', 'animate');
     });
     const targetPanel = document.getElementById(`view-${view}`);
     targetPanel.classList.add('active', 'animate');
-    
+
     currentView = view;
+
+    // Update URL hash
+    if (updateHash) {
+        const hash = view === 'landing' ? '' : view;
+        history.pushState(null, '', hash ? `#${hash}` : window.location.pathname);
+    }
 }
 
 function goToLanding(event) {
@@ -4032,12 +4056,12 @@ function displayResult(response) {
                 <div class="header-content">
                     <span class="report-badge">ANALYSIS COMPLETE</span>
                     <h1 class="report-title-v2">AI 피부 시술 컨설팅 리포트</h1>
-                    <p class="report-subtitle">Personalized Treatment Recommendation by Only In Seoul</p>
+                    <p class="report-subtitle">Personalized Treatment Recommendation by Skinn.kr</p>
                     <p class="report-datetime">📅 ${new Date().toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' })} ${new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' })} 기준</p>
                 </div>
                 
                 <!-- 분석 과정 시각화 (깔때기) -->
-                <div class="funnel-title">Only In Seoul 피부과 가이드 분석 프로세스</div>
+                <div class="funnel-title">Skinn.kr 피부과 가이드 분석 프로세스</div>
                 <div class="funnel-container">
                     <div class="funnel-step step-1">
                         <div class="funnel-step-content">
@@ -4851,8 +4875,8 @@ function displayResult(response) {
             
             <!-- 푸터 -->
             <div class="report-footer-v2">
-                <div class="footer-logo">Only In Seoul</div>
-                <p class="footer-main">본 리포트는 <strong>${treatments.length}개 피부과 시술 데이터</strong>와 <strong>임상 문헌 기반 시너지 분석</strong>을 통해 Only In Seoul AI가 생성한 맞춤 분석 결과입니다.</p>
+                <div class="footer-logo">Skinn.kr</div>
+                <p class="footer-main">본 리포트는 <strong>${treatments.length}개 피부과 시술 데이터</strong>와 <strong>임상 문헌 기반 시너지 분석</strong>을 통해 Skinn.kr AI가 생성한 맞춤 분석 결과입니다.</p>
                 <p class="footer-sub">정확한 진단과 최종 시술 결정은 반드시 피부과 전문의와 대면 상담 후 진행하시기 바랍니다.</p>
             </div>
         </div>

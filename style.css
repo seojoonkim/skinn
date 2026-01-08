@@ -96,10 +96,10 @@ body {
     display: inline-flex;
     align-items: center;
     padding: 4px 10px;
-    background: linear-gradient(135deg, #4338ca 0%, #6366f1 100%);
-    color: #ffffff;
+    background: #eef2ff;
+    color: #4338ca;
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 500;
     border-radius: 20px;
     white-space: nowrap;
     flex-shrink: 0;
@@ -216,6 +216,7 @@ body {
     gap: 12px;
     max-width: 1100px;
     margin: 0 auto;
+    padding-top: 24px;
 }
 
 .concern-card {
@@ -279,10 +280,10 @@ body {
 
 .concern-count {
     padding: 3px 8px;
-    background: var(--gold-gradient);
-    color: #ffffff;
+    background: #eef2ff;
+    color: #4338ca;
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 500;
     border-radius: 10px;
     white-space: nowrap;
 }
@@ -1621,33 +1622,25 @@ body {
 }
 
 /* ===== Responsive - Tablet ===== */
-/* ===== Responsive - Medium (1200px) - 헤더 2줄 레이아웃 ===== */
+/* ===== Responsive - Medium (1200px) - 헤더 1줄 유지, 탭을 우측으로 ===== */
 @media (max-width: 1200px) {
     .header {
-        flex-direction: column;
-        gap: 12px;
-        padding: 14px 24px;
+        padding: 12px 24px;
     }
-    
-    .header-left {
-        width: 100%;
-        justify-content: center;
-    }
-    
+
     .header-right {
         display: none;
     }
-    
+
     .view-tabs {
         position: static;
         transform: none;
-        width: auto;
-        justify-content: center;
+        margin-left: auto;
     }
-    
+
     .view-tab {
-        padding: 10px 20px;
-        font-size: 14px;
+        padding: 8px 16px;
+        font-size: 13px;
     }
 }
 
@@ -3487,7 +3480,7 @@ textarea.text-input.tall {
     align-items: center;
     justify-content: center;
     gap: 20px;
-    min-height: calc(100vh - 80px);
+    min-height: calc(100vh - 120px);
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 60px;
@@ -3500,12 +3493,11 @@ textarea.text-input.tall {
 
 .landing-badge {
     display: inline-block;
-    padding: 8px 16px;
+    padding: 6px 14px;
     background: #eef2ff;
-    border: 1px solid #c7d2fe;
     border-radius: 20px;
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 12px;
+    font-weight: 500;
     color: #4338ca;
     margin-bottom: 16px;
 }
