@@ -720,8 +720,9 @@ function openTreatmentModal(name) {
 
 function showModal(t) {
     document.body.style.overflow = 'hidden';
+    const header = document.getElementById('modalHeader');
     const content = document.getElementById('modalContent');
-    
+
     // 검색 URL 생성
     const searchName = encodeURIComponent(t.name + ' 후기');
     const searchNameEn = encodeURIComponent(t.nameEn + ' review');
@@ -730,15 +731,17 @@ function showModal(t) {
     const youtubeUrl = `https://www.youtube.com/results?search_query=${searchName}`;
     const youtubeEnUrl = `https://www.youtube.com/results?search_query=${searchNameEn}`;
     const googleUrl = `https://www.google.com/search?q=${searchNameEn}`;
-    
-    content.innerHTML = `
-        <!-- 1. 헤더 -->
-        <div class="modal-header">
-            <h2 class="modal-title">${t.name}</h2>
+
+    // 헤더 영역 (고정)
+    header.innerHTML = `
+        <h2 class="modal-title">${t.name}</h2>
+        <div class="modal-header-sub">
             <p class="modal-subtitle">${t.nameEn || ''} · ${t.brand || ''}</p>
             <span class="modal-badge">${t.category || ''} / ${t.subcategory || ''}</span>
         </div>
-        
+    `;
+
+    content.innerHTML = `
         <!-- 2. 한줄 요약 -->
         ${t.review ? `
         <div class="modal-section">

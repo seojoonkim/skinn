@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>피부과 시술 가이드 | Skinn.kr</title>
+    <title>피부과 가이드 | Skinn.kr</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.min.css" as="style">
     <link href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -47,7 +48,7 @@
                         <div class="landing-badge">Skinn.kr 피부과 가이드</div>
                         <h1 class="landing-title">피부과 시술,<br><span class="highlight">준비된 상태</span>로<br>상담받으세요</h1>
                         <p class="landing-subtitle">
-                            100개가 넘는 시술명, 병원마다 다른 가격.<br>
+                            100개가 넘는 시술명, 피부과마다 다른 가격.<br>
                             무엇을 선택해야 할지 막막하셨죠?<br><br>
                             <strong>이제는 객관적인 데이터로 미리 준비하세요.</strong><br>
                             나에게 맞는 시술이 무엇인지, 적정 가격은 얼마인지<br>
@@ -400,7 +401,7 @@
                                 <div class="question-group">
                                     <label class="question-label">선호하는 시술 방식</label>
                                     <div class="option-grid cols-2 multi-select" data-field="treatmentType">
-                                        <button class="option-btn selected" data-value="상관없음"><span class="btn-title">상관없어요 (전문가 추천)<span class="recommend-badge">추천</span></span></button>
+                                        <button class="option-btn selected" data-value="상관없음"><span class="btn-title">상관없어요</span><span class="opt-hint">전문가 추천</span></button>
                                         <button class="option-btn" data-value="주사"><span class="btn-title">주사 시술</span><span class="opt-hint">보톡스, 필러, 스킨부스터 등</span></button>
                                         <button class="option-btn" data-value="레이저"><span class="btn-title">레이저/광</span><span class="opt-hint">토닝, IPL, 프락셀 등</span></button>
                                         <button class="option-btn" data-value="리프팅"><span class="btn-title">리프팅 장비</span><span class="opt-hint">울쎄라, 써마지, 실리프팅 등</span></button>
@@ -1042,6 +1043,7 @@
                         <path d="M18 6L6 18M6 6l12 12"/>
                     </svg>
                 </button>
+                <div class="modal-header" id="modalHeader"></div>
                 <div class="modal-content" id="modalContent"></div>
             </div>
         </div>
