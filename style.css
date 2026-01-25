@@ -372,35 +372,97 @@ body {
     background: var(--emerald-700);
 }
 
-.lang-selector {
-    display: flex;
-    align-items: center;
-    gap: 1px;
-    padding: 2px;
-    background: var(--slate-100);
-    border-radius: 5px;
+/* Language Dropdown */
+.lang-dropdown {
+    position: relative;
 }
 
-.lang-btn {
-    padding: 4px 6px;
-    font-size: 11px;
+.lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 10px;
+    font-size: 12px;
     font-weight: 500;
-    color: var(--slate-500);
-    background: transparent;
-    border: none;
-    border-radius: 4px;
+    color: var(--slate-600);
+    background: var(--slate-50);
+    border: 1px solid var(--slate-200);
+    border-radius: 5px;
     cursor: pointer;
     transition: all 0.15s ease;
 }
 
-.lang-btn:hover {
-    color: var(--slate-700);
+.lang-toggle:hover {
+    background: var(--slate-100);
+    border-color: var(--slate-300);
 }
 
-.lang-btn.active {
-    color: var(--emerald-700);
+.lang-current {
+    min-width: 16px;
+    text-align: center;
+}
+
+.lang-arrow {
+    color: var(--slate-400);
+    transition: transform 0.2s ease;
+}
+
+.lang-dropdown.open .lang-arrow {
+    transform: rotate(180deg);
+}
+
+.lang-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    min-width: 100px;
     background: white;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--slate-200);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.15s ease;
+    z-index: 200;
+}
+
+.lang-dropdown.open .lang-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.lang-option {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--slate-600);
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.lang-option:first-child {
+    border-radius: 5px 5px 0 0;
+}
+
+.lang-option:last-child {
+    border-radius: 0 0 5px 5px;
+}
+
+.lang-option:hover {
+    background: var(--slate-50);
+    color: var(--slate-900);
+}
+
+.lang-option.active {
+    color: var(--emerald-700);
+    background: var(--emerald-50);
 }
 
 /* Legacy (deprecated) */
@@ -3859,7 +3921,7 @@ textarea.text-input.tall {
 }
 
 .logo-main {
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 800;
     background: linear-gradient(135deg, var(--emerald-600) 0%, var(--emerald-500) 100%);
     -webkit-text-fill-color: transparent;

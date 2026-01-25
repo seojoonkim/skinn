@@ -68,7 +68,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize landing page enhancements
     setupLandingEnhancements();
+
+    // Initialize language dropdown
+    setupLangDropdown();
 });
+
+// ===== Language Dropdown =====
+function setupLangDropdown() {
+    const dropdown = document.getElementById('langDropdown');
+    const toggle = document.getElementById('langToggle');
+    const menu = document.getElementById('langMenu');
+    const currentLang = dropdown?.querySelector('.lang-current');
+    const options = dropdown?.querySelectorAll('.lang-option');
+
+    if (!dropdown || !toggle || !menu) return;
+
+    // Toggle dropdown
+    toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle('open');
+    });
+
+    // Select language
+    options?.forEach(option => {
+        option.addEventListener('click', () => {
+            const lang = option.dataset.lang;
+            const shortNames = { ko: '한', en: 'EN', ja: '日', zh: '中' };
+
+            // Update current display
+            if (currentLang) currentLang.textContent = shortNames[lang] || lang;
+
+            // Update active state
+            options.forEach(o => o.classList.remove('active'));
+            option.classList.add('active');
+
+            // Close dropdown
+            dropdown.classList.remove('open');
+        });
+    });
+
+    // Close on outside click
+    document.addEventListener('click', () => {
+        dropdown.classList.remove('open');
+    });
+}
 
 // ===== Hash-based Routing =====
 function handleHashChange() {
