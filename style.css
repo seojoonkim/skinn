@@ -4178,7 +4178,7 @@ textarea.text-input.tall {
     max-width: 100vw;
 }
 
-/* Layered gradient mesh background */
+/* Subtle gradient background */
 #view-landing::before {
     content: '';
     position: absolute;
@@ -4186,29 +4186,11 @@ textarea.text-input.tall {
     left: 0;
     right: 0;
     bottom: 0;
-    background:
-        radial-gradient(ellipse 120% 80% at 85% 30%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse 100% 60% at 10% 70%, rgba(13, 148, 136, 0.06) 0%, transparent 45%),
-        radial-gradient(ellipse 80% 50% at 50% 100%, rgba(52, 211, 153, 0.04) 0%, transparent 40%);
+    background: radial-gradient(ellipse 80% 60% at 70% 20%, rgba(16, 185, 129, 0.06) 0%, transparent 50%);
     pointer-events: none;
-    animation: meshFloat 20s ease-in-out infinite;
 }
 
-@keyframes meshFloat {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.85; transform: scale(1.02); }
-}
-
-/* Subtle dot pattern overlay */
-#view-landing::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle at center, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
-    background-size: 32px 32px;
-    pointer-events: none;
-    z-index: 0;
-}
+/* Remove dot pattern for cleaner look */
 
 .landing-fullscreen {
     display: flex;
@@ -4235,12 +4217,12 @@ textarea.text-input.tall {
     align-items: center;
     gap: 6px;
     padding: 6px 14px;
-    background: linear-gradient(135deg, var(--emerald-50) 0%, var(--teal-50) 100%);
+    background: var(--emerald-50);
     border: 1px solid var(--emerald-200);
     border-radius: var(--radius-full);
     font-size: 11px;
     font-weight: 600;
-    color: var(--emerald-700);
+    color: var(--emerald-600);
     margin-bottom: 12px;
     animation: fadeInUp 0.5s ease-out;
 }
@@ -4261,10 +4243,7 @@ textarea.text-input.tall {
 }
 
 .landing-title .highlight {
-    background: linear-gradient(135deg, #059669 0%, #0d9488 40%, #0ea5e9 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--emerald-600);
     font-weight: 800;
 }
 
@@ -4290,9 +4269,9 @@ textarea.text-input.tall {
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, var(--emerald-400), var(--teal-400));
+    background: var(--emerald-400);
     border-radius: 1px;
-    opacity: 0.5;
+    opacity: 0.4;
 }
 
 @keyframes fadeInUp {
@@ -4312,64 +4291,41 @@ textarea.text-input.tall {
     justify-content: center;
     gap: 12px;
     padding: 18px 36px;
-    background: linear-gradient(135deg, var(--emerald-500) 0%, var(--teal-500) 50%, var(--emerald-600) 100%);
-    background-size: 200% 200%;
+    background: var(--emerald-500);
     color: white;
     border: none;
-    border-radius: 16px;
+    border-radius: 14px;
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: all 0.2s ease;
     margin-bottom: 28px;
-    box-shadow:
-        0 4px 16px rgba(16, 185, 129, 0.3),
-        0 8px 32px rgba(16, 185, 129, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
     position: relative;
     animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
     letter-spacing: -0.01em;
-    overflow: hidden;
-}
-
-.cta-button-main::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
 }
 
 .cta-button-main::after {
     content: '→';
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform 0.2s ease;
 }
 
 .cta-button-main:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow:
-        0 8px 24px rgba(16, 185, 129, 0.4),
-        0 16px 48px rgba(16, 185, 129, 0.25),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25);
-    background-position: 100% 50%;
-}
-
-.cta-button-main:hover::before {
-    opacity: 1;
+    background: var(--emerald-600);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3);
 }
 
 .cta-button-main:hover::after {
-    transform: translateX(6px);
+    transform: translateX(4px);
 }
 
 .cta-button-main:active {
-    transform: translateY(-2px) scale(1.01);
-    box-shadow:
-        0 4px 12px rgba(16, 185, 129, 0.35),
-        0 8px 24px rgba(16, 185, 129, 0.2);
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
 }
 
 /* Landing Features */
@@ -4483,7 +4439,7 @@ textarea.text-input.tall {
     content: '';
     position: absolute;
     inset: -2px;
-    background: linear-gradient(135deg, var(--emerald-400), var(--teal-400), var(--emerald-500));
+    background: var(--emerald-400);
     border-radius: inherit;
     z-index: -1;
     opacity: 0;
@@ -4909,14 +4865,11 @@ textarea.text-input.tall {
     }
 
     #view-landing::before {
-        background:
-            radial-gradient(ellipse 150% 50% at 50% 0%, rgba(16, 185, 129, 0.08) 0%, transparent 60%),
-            radial-gradient(ellipse 100% 80% at 100% 50%, rgba(13, 148, 136, 0.04) 0%, transparent 50%);
+        background: radial-gradient(ellipse 100% 50% at 50% 0%, rgba(16, 185, 129, 0.06) 0%, transparent 50%);
     }
 
     #view-landing::after {
-        background-size: 24px 24px;
-        opacity: 0.6;
+        display: none;
     }
 
     .landing-fullscreen {
@@ -4979,7 +4932,7 @@ textarea.text-input.tall {
         left: 0;
         right: 0;
         height: 3px;
-        background: linear-gradient(90deg, var(--emerald-400), var(--teal-400), var(--emerald-500));
+        background: var(--emerald-500);
     }
 
     .mobile-hero-text {
@@ -4992,14 +4945,14 @@ textarea.text-input.tall {
         margin-bottom: 12px;
         padding: 6px 12px;
         font-size: 9px;
-        background: linear-gradient(135deg, var(--emerald-500) 0%, var(--teal-500) 100%);
+        background: var(--emerald-500);
         color: white;
         border: none;
         font-weight: 700;
         letter-spacing: 0.08em;
         text-transform: uppercase;
         border-radius: 20px;
-        box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+        box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
     }
 
     .mobile-hero-text .landing-badge::before {
@@ -5023,10 +4976,7 @@ textarea.text-input.tall {
     }
 
     .mobile-hero-text .landing-title .highlight {
-        background: linear-gradient(135deg, var(--emerald-500), var(--teal-500));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: var(--emerald-600);
     }
 
     .mobile-hero-img {
@@ -5149,10 +5099,7 @@ textarea.text-input.tall {
     .landing-stats-bar .stat-num {
         font-size: 20px;
         font-weight: 800;
-        background: linear-gradient(135deg, var(--emerald-600), var(--teal-600));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: var(--emerald-600);
         padding: 0;
     }
 
