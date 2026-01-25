@@ -272,9 +272,10 @@ a:focus-visible {
     --space-12: 48px;
 }
 
-html, body {
+html {
     overflow-x: hidden;
-    max-width: 100vw;
+    overflow-y: scroll;
+    height: 100%;
 }
 
 body {
@@ -282,7 +283,9 @@ body {
     background: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
-    min-height: 100vh;
+    min-height: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     letter-spacing: -0.01em;
@@ -4172,8 +4175,6 @@ textarea.text-input.tall {
 #view-landing {
     background: linear-gradient(165deg, #fafffe 0%, #ffffff 40%, #f8fdfb 100%);
     position: relative;
-    overflow: visible;
-    min-height: calc(100vh - 56px);
     width: 100%;
     max-width: 100vw;
 }
@@ -4905,9 +4906,6 @@ textarea.text-input.tall {
 
     #view-landing {
         height: auto;
-        min-height: calc(100vh - 56px);
-        min-height: calc(100dvh - 56px);
-        overflow: visible;
         padding-bottom: 100px;
         background: linear-gradient(180deg, #fafffe 0%, #ffffff 30%, #f9fdfb 100%);
     }

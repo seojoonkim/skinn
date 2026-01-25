@@ -8,7 +8,20 @@
       "Bash(git push:*)",
       "Bash(npx http-server -p 8080)",
       "Bash(git commit:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "WebFetch(domain:skills.sh)",
+      "Bash(npx skills:*)",
+      "Bash(dir:*)",
+      "Bash(python -m http.server:*)",
+      "WebSearch",
+      "WebFetch(domain:www.cyberoptik.net)",
+      "WebFetch(domain:mycodelesswebsite.com)",
+      "WebFetch(domain:www.reduxlabs.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(curl:*)",
+      "Bash(gh api:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(cat:*)"
     ]
   }
 }
