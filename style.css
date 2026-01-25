@@ -1608,7 +1608,7 @@ body {
 .data-table th:nth-child(4),
 .data-table td:nth-child(4) { width: 20%; } /* 효과 */
 .data-table th:nth-child(5),
-.data-table td:nth-child(5) { width: 10%; text-align: right; } /* 지속 */
+.data-table td:nth-child(5) { width: 10%; text-align: right; padding-right: 20px; } /* 지속 */
 .data-table th:nth-child(6),
 .data-table td:nth-child(6) { width: 12%; text-align: right; } /* 통증 */
 .data-table th:nth-child(7),
