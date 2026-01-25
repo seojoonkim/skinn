@@ -4695,21 +4695,12 @@ textarea.text-input.tall {
 
 .landing-card-row .card-icon {
     flex-shrink: 0;
-    width: 46px;
-    height: 46px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(13, 148, 136, 0.06) 100%);
-    border-radius: 14px;
     color: var(--emerald-600);
-    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.landing-card-row .landing-card.horizontal:hover .card-icon {
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(13, 148, 136, 0.1) 100%);
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
 }
 
 .landing-card-row .card-icon svg {
@@ -4739,16 +4730,8 @@ textarea.text-input.tall {
 
 .landing-card-row .card-arrow {
     flex-shrink: 0;
-    width: 24px;
-    height: 24px;
-    color: var(--slate-300);
-    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(16, 185, 129, 0.05);
-    border-radius: 8px;
-    padding: 4px;
+    color: var(--slate-400);
+    transition: all 0.2s ease;
 }
 
 .landing-card-row .card-arrow svg {
@@ -4758,8 +4741,7 @@ textarea.text-input.tall {
 
 .landing-card-row .landing-card:hover .card-arrow {
     color: var(--emerald-600);
-    background: rgba(16, 185, 129, 0.12);
-    transform: translateX(4px);
+    transform: translateX(3px);
 }
 
 /* Trust Text */
@@ -5151,19 +5133,17 @@ textarea.text-input.tall {
     }
 
     .landing-card-row .card-icon {
-        width: 48px;
-        height: 48px;
-        border-radius: 14px;
-        margin-bottom: 12px;
-        background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(13, 148, 136, 0.08) 100%);
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
     .landing-card-row .card-icon svg {
-        width: 22px;
-        height: 22px;
+        width: 24px;
+        height: 24px;
         color: var(--emerald-600);
     }
 
