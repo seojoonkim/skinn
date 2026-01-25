@@ -17,25 +17,58 @@
     <div id="app">
         <!-- Header -->
         <header class="header">
-            <div class="header-left">
-                <a href="../" class="logo-link logo-main">Skinn.kr</a>
-                <a href="./" class="logo-link logo-sub-link" onclick="goToLanding(event)">
-                    <span class="logo-divider">|</span>
-                    <span class="logo-sub">서울 피부과 가이드</span>
-                </a>
-                <span class="db-count" id="dbCount">0개 시술</span>
+            <!-- Row 1: Logo -->
+            <div class="header-row-top">
+                <div class="header-left">
+                    <a href="../" class="logo-link logo-main">Skinn.kr</a>
+                    <a href="./" class="logo-link logo-sub-link" onclick="goToLanding(event)">
+                        <span class="logo-divider">|</span>
+                        <span class="logo-sub">서울 피부과 가이드</span>
+                    </a>
+                    <span class="db-count" id="dbCount">0개 시술</span>
+                </div>
             </div>
-            
-            <!-- View Tabs (Center) -->
-            <nav class="view-tabs">
-                <button class="view-tab" data-view="consult">AI 상담</button>
-                <button class="view-tab" data-view="concern">고민별 찾기</button>
-                <button class="view-tab" data-view="filter">카드 뷰</button>
-                <button class="view-tab" data-view="table">테이블 뷰</button>
-            </nav>
-            
-            <!-- 균형용 빈 공간 -->
-            <div class="header-right"></div>
+            <!-- Row 2: Menu Tabs -->
+            <div class="header-row-tabs">
+                <nav class="view-tabs-enhanced" role="tablist">
+                    <div class="tabs-bg-slider" id="tabsSlider"></div>
+                    <button class="view-tab-new" data-view="consult" role="tab" aria-selected="false">
+                        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            <circle cx="12" cy="10" r="1" fill="currentColor"/>
+                            <circle cx="8" cy="10" r="1" fill="currentColor"/>
+                            <circle cx="16" cy="10" r="1" fill="currentColor"/>
+                        </svg>
+                        <span class="tab-label">AI 상담</span>
+                    </button>
+                    <button class="view-tab-new" data-view="concern" role="tab" aria-selected="false">
+                        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="M21 21l-4.35-4.35"/>
+                        </svg>
+                        <span class="tab-label">고민별</span>
+                    </button>
+                    <button class="view-tab-new" data-view="filter" role="tab" aria-selected="false">
+                        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7" rx="1"/>
+                            <rect x="14" y="3" width="7" height="7" rx="1"/>
+                            <rect x="3" y="14" width="7" height="7" rx="1"/>
+                            <rect x="14" y="14" width="7" height="7" rx="1"/>
+                        </svg>
+                        <span class="tab-label">카드뷰</span>
+                    </button>
+                    <button class="view-tab-new" data-view="table" role="tab" aria-selected="false">
+                        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 3h18v18H3z"/>
+                            <path d="M3 9h18"/>
+                            <path d="M3 15h18"/>
+                            <path d="M9 3v18"/>
+                            <path d="M15 3v18"/>
+                        </svg>
+                        <span class="tab-label">테이블</span>
+                    </button>
+                </nav>
+            </div>
         </header>
 
         <!-- Main Content -->
@@ -45,15 +78,30 @@
             <section class="view-panel active" id="view-landing">
                 <div class="landing-fullscreen">
                     <div class="landing-left">
-                        <div class="landing-badge">서울 피부과 가이드</div>
-                        <h1 class="landing-title">피부과 시술,<br><span class="highlight">준비된 상태</span>로<br>상담받으세요</h1>
+                        <!-- Mobile Hero Row: Text + Image -->
+                        <div class="mobile-hero-row">
+                            <div class="mobile-hero-text">
+                                <div class="landing-badge">서울 피부과 가이드</div>
+                                <h1 class="landing-title">피부과 시술,<br><span class="highlight">준비된 상태</span>로<br>상담받으세요</h1>
+                            </div>
+                            <div class="mobile-hero-img">
+                                <img src="images/bg.png" alt="건강한 피부" width="100" height="120" loading="eager">
+                            </div>
+                        </div>
+                        <!-- Desktop: Badge & Title shown separately -->
+                        <div class="desktop-hero-text">
+                            <div class="landing-badge">서울 피부과 가이드</div>
+                            <h1 class="landing-title">피부과 시술,<br><span class="highlight">준비된 상태</span>로<br>상담받으세요</h1>
+                        </div>
                         <p class="landing-subtitle">
                             1,000개 피부과 정보와 15만 건의 후기 데이터.<br>
                             <strong>나에게 맞는 시술과 적정 가격</strong>을 미리 파악하고<br>
                             주도적으로 상담받으세요.
                         </p>
-                        <button class="cta-button-main" onclick="switchToView('consult')">
-                            AI 맞춤 상담 시작하기
+                        <button class="cta-button-main" onclick="switchToView('consult')" aria-label="AI 맞춤 상담 시작하기">
+                            <span class="cta-shimmer" aria-hidden="true"></span>
+                            <span class="cta-text">AI 맞춤 상담 시작하기</span>
+                            <span class="cta-pulse" aria-hidden="true"></span>
                         </button>
 
                         <div class="landing-features">
@@ -83,14 +131,22 @@
                             </div>
                         </div>
 
+                        <!-- Live Activity Indicator -->
+                        <div class="live-activity" role="status" aria-live="polite">
+                            <span class="live-dot" aria-hidden="true"></span>
+                            <span class="live-text">지금 <strong id="liveUsers">7</strong>명이 상담 중</span>
+                            <span class="live-divider">·</span>
+                            <span class="live-text">오늘 <strong id="todayVisitors">1</strong>명 방문</span>
+                        </div>
+
                         <div class="landing-stats-bar">
                             <div class="stat-item">
-                                <span class="stat-num">1,000+</span>
+                                <span class="stat-num" data-count="1000">1,000+</span>
                                 <span class="stat-label">피부과 정보 수집</span>
                             </div>
                             <div class="stat-divider"></div>
                             <div class="stat-item">
-                                <span class="stat-num">15만+</span>
+                                <span class="stat-num" data-count="150000">15만+</span>
                                 <span class="stat-label">시술 후기 분석</span>
                             </div>
                             <div class="stat-divider"></div>
@@ -99,18 +155,71 @@
                                 <span class="stat-label">검증된 시술 DB</span>
                             </div>
                         </div>
+
+                        <!-- Trust Badges - Professional & Colorful -->
+                        <div class="trust-badges-pro">
+                            <div class="trust-badge-pro verified">
+                                <span class="badge-icon-wrap">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.1"/>
+                                    </svg>
+                                </span>
+                                <span class="badge-content">
+                                    <span class="badge-label">전문의 검증</span>
+                                    <span class="badge-sub">Verified</span>
+                                </span>
+                            </div>
+                            <div class="trust-badge-pro secure">
+                                <span class="badge-icon-wrap">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.1"/>
+                                        <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                                <span class="badge-content">
+                                    <span class="badge-label">개인정보 보호</span>
+                                    <span class="badge-sub">Secure</span>
+                                </span>
+                            </div>
+                            <div class="trust-badge-pro data">
+                                <span class="badge-icon-wrap">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.1"/>
+                                        <path d="M7 16V12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                                        <path d="M12 16V8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                                        <path d="M17 16v-3" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                                    </svg>
+                                </span>
+                                <span class="badge-content">
+                                    <span class="badge-label">실제 데이터 기반</span>
+                                    <span class="badge-sub">15만+ 후기</span>
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                    
+
+                    <!-- Mobile Hero Visual (shown only on mobile) -->
+                    <div class="mobile-hero-visual" aria-hidden="true">
+                        <div class="mobile-hero-card">
+                            <div class="hero-card-icon">🔬</div>
+                            <div class="hero-card-text">
+                                <span class="hero-card-title">AI 기반 분석</span>
+                                <span class="hero-card-desc">15만+ 후기 데이터</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="landing-right">
                         <!-- Hero Image -->
                         <div class="landing-hero-image">
-                            <img src="images/bg.png" alt="건강한 피부" class="hero-img">
+                            <img src="images/bg.png" alt="건강한 피부" class="hero-img" width="400" height="450" loading="eager">
                             <div class="hero-overlay"></div>
                         </div>
 
                         <div class="landing-card-row">
-                            <div class="landing-card horizontal" onclick="switchToView('concern')">
-                                <span class="card-icon">
+                            <div class="landing-card horizontal" role="button" tabindex="0" onclick="switchToView('concern')" onkeydown="if(event.key==='Enter'||event.key===' ')switchToView('concern')">
+                                <span class="card-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <circle cx="11" cy="11" r="8"/>
                                         <path d="M21 21l-4.35-4.35"/>
@@ -120,14 +229,14 @@
                                     <span class="card-title">고민별 시술 찾기</span>
                                     <p class="card-desc-small">주름, 탄력, 모공, 기미 등 내 고민에 맞는 시술</p>
                                 </div>
-                                <span class="card-arrow">
+                                <span class="card-arrow" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M9 18l6-6-6-6"/>
                                     </svg>
                                 </span>
                             </div>
-                            <div class="landing-card horizontal" onclick="switchToView('filter')">
-                                <span class="card-icon">
+                            <div class="landing-card horizontal" role="button" tabindex="0" onclick="switchToView('filter')" onkeydown="if(event.key==='Enter'||event.key===' ')switchToView('filter')">
+                                <span class="card-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <rect x="3" y="3" width="7" height="7" rx="1"/>
                                         <rect x="14" y="3" width="7" height="7" rx="1"/>
@@ -139,11 +248,20 @@
                                     <span class="card-title">전체 시술 검색</span>
                                     <p class="card-desc-small"><span class="dynamic-count"></span>개 시술 자유롭게 비교</p>
                                 </div>
-                                <span class="card-arrow">
+                                <span class="card-arrow" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M9 18l6-6-6-6"/>
                                     </svg>
                                 </span>
+                            </div>
+                        </div>
+
+                        <!-- Compact Testimonial - 오른쪽 카드 아래 -->
+                        <div class="compact-testimonial">
+                            <div class="compact-testimonial-inner" id="compactTestimonial">
+                                <span class="compact-stars">★★★★★</span>
+                                <span class="compact-quote">"울쎄라 가격 천차만별인데 여기서 시세 파악하고 갔더니 협상이 됐어요"</span>
+                                <span class="compact-author">- 박지* (34세, 강남)</span>
                             </div>
                         </div>
 
@@ -1072,6 +1190,35 @@
                 <div class="modal-content" id="modalContent"></div>
             </div>
         </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Activity Toast Notification -->
+    <div class="activity-toast" id="activityToast">
+        <div class="toast-icon">👤</div>
+        <div class="toast-content">
+            <span class="toast-message" id="toastMessage">방금 김**님이 AI 상담을 시작했습니다</span>
+            <span class="toast-time" id="toastTime">방금 전</span>
+        </div>
+    </div>
+
+    <!-- Mobile Fixed CTA Bar -->
+    <div class="mobile-cta-bar" id="mobileCta">
+        <button class="mobile-cta-btn primary" onclick="switchToView('consult')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+            AI 상담
+        </button>
+        <button class="mobile-cta-btn secondary" onclick="switchToView('concern')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="M21 21l-4.35-4.35"/>
+            </svg>
+            시술 찾기
+        </button>
     </div>
 
     <script>

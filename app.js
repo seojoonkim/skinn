@@ -65,6 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Listen for hash changes (browser back/forward)
     window.addEventListener('popstate', handleHashChange);
+
+    // Initialize landing page enhancements
+    setupLandingEnhancements();
 });
 
 // ===== Hash-based Routing =====
@@ -100,23 +103,76 @@ function updateConcernCounts() {
 
 // ===== View Tabs =====
 function setupViewTabs() {
-    const tabs = document.querySelectorAll('.view-tab');
-    
-    tabs.forEach(tab => {
+    // Support both old and new tab systems
+    const oldTabs = document.querySelectorAll('.view-tab');
+    const newTabs = document.querySelectorAll('.view-tab-new');
+    const slider = document.getElementById('tabsSlider');
+
+    // Setup old tabs (legacy)
+    oldTabs.forEach(tab => {
         tab.addEventListener('click', () => {
             const view = tab.dataset.view;
             switchToView(view);
         });
     });
+
+    // Setup new enhanced tabs
+    newTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const view = tab.dataset.view;
+            switchToView(view);
+        });
+    });
+
+    // Initialize slider position
+    if (slider && newTabs.length > 0) {
+        updateTabSlider();
+    }
+}
+
+// Update sliding indicator position
+function updateTabSlider() {
+    const slider = document.getElementById('tabsSlider');
+    const activeTab = document.querySelector('.view-tab-new.active');
+
+    if (!slider || !activeTab) {
+        if (slider) slider.classList.remove('visible');
+        return;
+    }
+
+    const tabsContainer = activeTab.parentElement;
+    const containerRect = tabsContainer.getBoundingClientRect();
+    const tabRect = activeTab.getBoundingClientRect();
+
+    const left = tabRect.left - containerRect.left;
+    const width = tabRect.width;
+
+    slider.style.left = left + 'px';
+    slider.style.width = width + 'px';
+    slider.classList.add('visible');
 }
 
 function switchToView(view, updateHash = true) {
-    const tabs = document.querySelectorAll('.view-tab');
+    // Update old tab active state
+    const oldTabs = document.querySelectorAll('.view-tab');
+    oldTabs.forEach(t => t.classList.remove('active'));
+    const oldTargetTab = document.querySelector(`.view-tab[data-view="${view}"]`);
+    if (oldTargetTab) oldTargetTab.classList.add('active');
 
-    // Update tab active state
-    tabs.forEach(t => t.classList.remove('active'));
-    const targetTab = document.querySelector(`[data-view="${view}"]`);
-    if (targetTab) targetTab.classList.add('active');
+    // Update new tab active state
+    const newTabs = document.querySelectorAll('.view-tab-new');
+    newTabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+    });
+    const newTargetTab = document.querySelector(`.view-tab-new[data-view="${view}"]`);
+    if (newTargetTab) {
+        newTargetTab.classList.add('active');
+        newTargetTab.setAttribute('aria-selected', 'true');
+    }
+
+    // Update sliding indicator
+    setTimeout(updateTabSlider, 10);
 
     // Update view panel
     document.querySelectorAll('.view-panel').forEach(p => {
@@ -4933,4 +4989,396 @@ function resetConsultation() {
     document.getElementById('consultResult').classList.add('hidden');
     document.getElementById('consultLoading').classList.add('hidden');
     document.getElementById('consultWizard').classList.remove('hidden');
+}
+
+// ===== Landing Page Enhancements =====
+
+// Compact Testimonials Rotation - Authentic & International
+function setupTestimonials() {
+    const compactEl = document.getElementById('compactTestimonial');
+    if (!compactEl) return;
+
+    const testimonials = [
+        // Korean users - specific & authentic
+        { stars: '★★★★★', quote: '"울쎄라 가격 천차만별인데 여기서 시세 파악하고 갔더니 협상이 됐어요"', author: '- 박지* (34세, 강남)' },
+        { stars: '★★★★☆', quote: '"인모드 vs 슈링크 고민했는데 비교표 보고 바로 결정했습니다"', author: '- 김수* (29세, 분당)' },
+        { stars: '★★★★★', quote: '"다운타임 정보가 정확해서 휴가 일정 맞춰 시술받았어요"', author: '- 이민* (41세, 서초)' },
+        { stars: '★★★★★', quote: '"필러 종류별 유지기간 비교가 진짜 유용했어요"', author: '- 정하* (27세, 판교)' },
+        { stars: '★★★★☆', quote: '"솔직히 반신반의했는데 실제 후기 기반이라 믿음이 가요"', author: '- 최영* (38세, 목동)' },
+
+        // International users - English
+        { stars: '★★★★★', quote: '"Finally found reliable info on Korean skincare procedures!"', author: '- Sarah K. (32, NYC)' },
+        { stars: '★★★★★', quote: '"Helped me prepare questions before my Seoul clinic visit"', author: '- Mike T. (28, Singapore)' },
+        { stars: '★★★★☆', quote: '"Price ranges were spot-on. No surprises at the clinic"', author: '- Emma L. (35, London)' },
+
+        // Japanese users
+        { stars: '★★★★★', quote: '"韓国の美容施術の相場が分かって助かりました"', author: '- 田中美* (31歳, 東京)' },
+        { stars: '★★★★★', quote: '"日本語はないけど、翻訳して使ってます。情報が正確！"', author: '- 佐藤愛* (26歳, 大阪)' },
+
+        // Chinese users
+        { stars: '★★★★★', quote: '"来韩国做医美之前必看的网站，价格参考很准"', author: '- 王小* (29岁, 上海)' },
+        { stars: '★★★★☆', quote: '"终于找到靠谱的韩国皮肤科信息了"', author: '- 李美* (33岁, 北京)' },
+    ];
+
+    // Shuffle array for variety
+    const shuffled = [...testimonials].sort(() => Math.random() - 0.5);
+    let currentIndex = 0;
+
+    function showNext() {
+        currentIndex = (currentIndex + 1) % shuffled.length;
+        const t = shuffled[currentIndex];
+
+        compactEl.style.opacity = '0';
+        compactEl.style.transform = 'translateY(5px)';
+
+        setTimeout(() => {
+            compactEl.querySelector('.compact-stars').textContent = t.stars;
+            compactEl.querySelector('.compact-quote').textContent = t.quote;
+            compactEl.querySelector('.compact-author').textContent = t.author;
+            compactEl.style.opacity = '1';
+            compactEl.style.transform = 'translateY(0)';
+        }, 300);
+    }
+
+    // Add transition styles
+    compactEl.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+
+    // Rotate every 5 seconds (slower for reading foreign languages)
+    setInterval(showNext, 5000);
+}
+
+// Live Users Animation
+function setupLiveUsers() {
+    const liveUsersEl = document.getElementById('liveUsers');
+    const todayVisitorsEl = document.getElementById('todayVisitors');
+
+    // Live users fluctuation (3-15 people, linear/smooth changes)
+    if (liveUsersEl) {
+        // Start with random value between 3-15
+        let currentLiveUsers = 3 + Math.floor(Math.random() * 13);
+        liveUsersEl.textContent = currentLiveUsers;
+
+        function updateLiveUsers() {
+            // Linear change: -1, 0, or +1
+            const change = Math.floor(Math.random() * 3) - 1;
+            currentLiveUsers = Math.max(3, Math.min(15, currentLiveUsers + change));
+
+            liveUsersEl.style.transition = 'opacity 0.2s';
+            liveUsersEl.style.opacity = '0.5';
+
+            setTimeout(() => {
+                liveUsersEl.textContent = currentLiveUsers;
+                liveUsersEl.style.opacity = '1';
+            }, 200);
+
+            // Schedule next update: 4-8 seconds
+            const nextUpdate = 4000 + Math.random() * 4000;
+            setTimeout(updateLiveUsers, nextUpdate);
+        }
+
+        // Start after 5 seconds
+        setTimeout(updateLiveUsers, 5000);
+    }
+
+    // Today's visitors (localStorage based, resets at midnight)
+    if (todayVisitorsEl) {
+        const today = new Date().toDateString();
+        const storageKey = 'skinn_visitors';
+        const dateKey = 'skinn_visitors_date';
+
+        // Check if date changed - reset counter
+        const storedDate = localStorage.getItem(dateKey);
+        let visitorCount = 0;
+
+        if (storedDate === today) {
+            // Same day - get existing count
+            visitorCount = parseInt(localStorage.getItem(storageKey) || '0');
+        } else {
+            // New day - reset to 0
+            visitorCount = 0;
+            localStorage.setItem(dateKey, today);
+        }
+
+        // Increment for this visit
+        visitorCount += 1;
+        localStorage.setItem(storageKey, visitorCount.toString());
+
+        // Display with formatting
+        todayVisitorsEl.textContent = visitorCount.toLocaleString();
+
+        // Occasionally increment
+        function incrementVisitors() {
+            visitorCount += 1;
+            localStorage.setItem(storageKey, visitorCount.toString());
+
+            todayVisitorsEl.style.transition = 'opacity 0.2s';
+            todayVisitorsEl.style.opacity = '0.5';
+
+            setTimeout(() => {
+                todayVisitorsEl.textContent = visitorCount.toLocaleString();
+                todayVisitorsEl.style.opacity = '1';
+            }, 200);
+
+            // Next increment in 15-45 seconds
+            const nextUpdate = 15000 + Math.random() * 30000;
+            setTimeout(incrementVisitors, nextUpdate);
+        }
+
+        // Start after 20 seconds
+        setTimeout(incrementVisitors, 20000);
+    }
+}
+
+// Mobile CTA Bar Visibility
+function setupMobileCta() {
+    const mobileCta = document.getElementById('mobileCta');
+    if (!mobileCta) return;
+
+    // Show/hide based on current view
+    function updateMobileCtaVisibility() {
+        if (window.innerWidth <= 768) {
+            // Only show on landing page
+            if (currentView === 'landing') {
+                mobileCta.style.display = 'flex';
+            } else {
+                mobileCta.style.display = 'none';
+            }
+        } else {
+            mobileCta.style.display = 'none';
+        }
+    }
+
+    // Override switchToView to update CTA visibility
+    const originalSwitchToView = switchToView;
+    window.switchToView = function(view, updateHash = true) {
+        originalSwitchToView(view, updateHash);
+        updateMobileCtaVisibility();
+    };
+
+    window.addEventListener('resize', updateMobileCtaVisibility);
+    updateMobileCtaVisibility();
+}
+
+// Scroll-based animations using Intersection Observer
+function setupScrollAnimations() {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-visible');
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements with animate-on-scroll class
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// Stats Counter Animation (숫자가 0에서 올라가는 효과)
+function setupStatsCountUp() {
+    const statsBar = document.querySelector('.landing-stats-bar');
+    if (!statsBar) return;
+
+    const statNums = statsBar.querySelectorAll('.stat-num[data-count]');
+    let animated = false;
+
+    function animateCount(el) {
+        const target = parseInt(el.dataset.count);
+        const duration = 2000; // 2초
+        const start = performance.now();
+        const suffix = el.textContent.includes('+') ? '+' : '';
+        const isLarge = target >= 10000;
+
+        function update(currentTime) {
+            const elapsed = currentTime - start;
+            const progress = Math.min(elapsed / duration, 1);
+
+            // Ease out cubic
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            const current = Math.floor(easeOut * target);
+
+            if (isLarge) {
+                // 큰 숫자는 "15만" 형식으로
+                if (current >= 10000) {
+                    el.textContent = Math.floor(current / 10000) + '만' + suffix;
+                } else {
+                    el.textContent = current.toLocaleString() + suffix;
+                }
+            } else {
+                el.textContent = current.toLocaleString() + suffix;
+            }
+
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            }
+        }
+
+        requestAnimationFrame(update);
+    }
+
+    // Intersection Observer로 화면에 보일 때 애니메이션 시작
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !animated) {
+                animated = true;
+                statNums.forEach(el => animateCount(el));
+            }
+        });
+    }, { threshold: 0.5 });
+
+    observer.observe(statsBar);
+}
+
+// Header scroll effect (스크롤 시 헤더 스타일 변경)
+function setupHeaderScroll() {
+    const header = document.querySelector('.header');
+    if (!header) return;
+
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > 50) {
+            header.classList.add('header-scrolled');
+        } else {
+            header.classList.remove('header-scrolled');
+        }
+
+        // 스크롤 다운 시 헤더 숨기기 (선택적)
+        // if (currentScroll > lastScroll && currentScroll > 100) {
+        //     header.classList.add('header-hidden');
+        // } else {
+        //     header.classList.remove('header-hidden');
+        // }
+
+        lastScroll = currentScroll;
+    });
+}
+
+// Scroll Progress Bar
+function setupScrollProgress() {
+    const progressBar = document.getElementById('scrollProgress');
+    if (!progressBar) return;
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (scrollTop / docHeight) * 100;
+        progressBar.style.width = progress + '%';
+    });
+}
+
+// Activity Toast Notifications - International & Authentic
+function setupActivityToast() {
+    const toast = document.getElementById('activityToast');
+    const messageEl = document.getElementById('toastMessage');
+    const iconEl = toast?.querySelector('.toast-icon');
+    if (!toast || !messageEl) return;
+
+    // Diverse user profiles with realistic activities (no location info)
+    const activities = [
+        // Korean users - specific procedures
+        { icon: '👩', msg: '김**님이 울쎄라 가격 비교 중' },
+        { icon: '👨', msg: '이**님이 인모드 후기 확인 중' },
+        { icon: '👩', msg: '박**님이 AI 맞춤 상담 시작' },
+        { icon: '👨', msg: '최**님이 보톡스 시술 비교 중' },
+        { icon: '👩', msg: '정**님이 필러 종류 검색 중' },
+        { icon: '👨', msg: '한**님이 모공 시술 정보 확인' },
+        { icon: '👩', msg: '윤**님이 리프팅 견적 비교 중' },
+        { icon: '👩', msg: '송**님이 슈링크 정보 확인 중' },
+        { icon: '👨', msg: '장**님이 AI 상담 진행 중' },
+
+        // International - English speakers (no city)
+        { icon: '🇺🇸', msg: 'Sarah K. comparing Ulthera prices' },
+        { icon: '🇬🇧', msg: 'James T. checking filler options' },
+        { icon: '🇸🇬', msg: 'Michelle L. browsing treatments' },
+        { icon: '🇦🇺', msg: 'Emma W. exploring K-beauty procedures' },
+        { icon: '🇨🇦', msg: 'David M. started AI consultation' },
+
+        // Japanese users (no city)
+        { icon: '🇯🇵', msg: '田中さんがリフティング情報を確認中' },
+        { icon: '🇯🇵', msg: '佐藤さんがAI相談を開始' },
+        { icon: '🇯🇵', msg: '山田さんが施術比較中' },
+
+        // Chinese users (no city)
+        { icon: '🇨🇳', msg: '王女士正在比较热玛吉价格' },
+        { icon: '🇨🇳', msg: '李先生正在查看提拉项目' },
+        { icon: '🇭🇰', msg: '陳小姐正在瀏覽療程資訊' },
+
+        // Other Asian countries (no city)
+        { icon: '🇹🇭', msg: 'Ploy exploring skin treatments' },
+        { icon: '🇻🇳', msg: 'Linh checking procedure prices' },
+        { icon: '🇲🇾', msg: 'Aisha comparing treatments' },
+    ];
+
+    // Shuffle for variety
+    const shuffled = [...activities].sort(() => Math.random() - 0.5);
+    let currentIndex = 0;
+
+    const timeTexts = [
+        '방금 전', '몇 초 전', '1분 전', '2분 전', 'just now', '1 min ago', '刚刚', 'たった今'
+    ];
+    const timeEl = document.getElementById('toastTime');
+
+    function showToast() {
+        const activity = shuffled[currentIndex];
+        currentIndex = (currentIndex + 1) % shuffled.length;
+
+        if (iconEl) iconEl.textContent = activity.icon;
+        messageEl.textContent = activity.msg;
+
+        // Match time text language to activity
+        if (timeEl) {
+            if (activity.msg.includes('님') || activity.msg.includes('**')) {
+                timeEl.textContent = ['방금 전', '몇 초 전', '1분 전'][Math.floor(Math.random() * 3)];
+            } else if (activity.msg.includes('さん') || activity.msg.includes('確認中')) {
+                timeEl.textContent = ['たった今', '1分前'][Math.floor(Math.random() * 2)];
+            } else if (activity.msg.includes('正在') || activity.msg.includes('女士') || activity.msg.includes('先生')) {
+                timeEl.textContent = ['刚刚', '1分钟前'][Math.floor(Math.random() * 2)];
+            } else {
+                timeEl.textContent = ['just now', '1 min ago', 'moments ago'][Math.floor(Math.random() * 3)];
+            }
+        }
+
+        toast.classList.add('show');
+
+        // Hide after 4 seconds
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 4000);
+    }
+
+    // Only show on landing page
+    function scheduleToast() {
+        if (currentView === 'landing') {
+            showToast();
+        }
+
+        // Random interval: 20-40 seconds (less aggressive)
+        const nextDelay = 20000 + Math.random() * 20000;
+        setTimeout(scheduleToast, nextDelay);
+    }
+
+    // Start after 12 seconds
+    setTimeout(scheduleToast, 12000);
+}
+
+// Initialize all landing enhancements
+function setupLandingEnhancements() {
+    setupTestimonials();
+    setupLiveUsers();
+    setupMobileCta();
+    setupScrollAnimations();
+    setupStatsCountUp();
+    setupHeaderScroll();
+    setupScrollProgress();
+    setupActivityToast();
 }
