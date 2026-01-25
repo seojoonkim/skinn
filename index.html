@@ -5,16 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>서울 피부과 시술 비교 플랫폼 | Skinn.kr</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.min.css" as="style">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20260126o">
+    <link rel="stylesheet" href="style.css?v=20260126p">
     <style>
         html {
-            opacity: 0;
+            visibility: hidden;
         }
-        html.fonts-loaded {
-            opacity: 1;
-            transition: opacity 0.15s ease-out;
+        html.ready {
+            visibility: visible;
+            animation: fadeIn 0.25s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
@@ -1207,20 +1211,18 @@
     </div>
 
     <script>
-        // 폰트 로딩 완료 후 표시
-        const showPage = () => {
-            if (!document.documentElement.classList.contains('fonts-loaded')) {
-                document.documentElement.classList.add('fonts-loaded');
-            }
-        };
+        // 페이지 표시
+        const showPage = () => document.documentElement.classList.add('ready');
 
-        // 폰트 로딩 완료 시 표시
-        if (document.fonts && document.fonts.ready) {
-            document.fonts.ready.then(showPage);
+        // Pretendard 폰트 로딩 대기
+        if (document.fonts) {
+            document.fonts.load('1em Pretendard').then(showPage).catch(showPage);
+        } else {
+            showPage();
         }
 
-        // 최대 대기 시간 300ms (폴백)
-        setTimeout(showPage, 300);
+        // 최대 대기 500ms
+        setTimeout(showPage, 500);
     </script>
     <script src="db_extended.js"></script>
     <script src="treatment_images.js"></script>
