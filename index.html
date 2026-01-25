@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>피부과 가이드 | Skinn.kr</title>
+    <title>서울 피부과 가이드 | Skinn.kr</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.min.css" as="style">
     <link href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
@@ -21,7 +21,7 @@
                 <a href="../" class="logo-link logo-main">Skinn.kr</a>
                 <a href="./" class="logo-link logo-sub-link" onclick="goToLanding(event)">
                     <span class="logo-divider">|</span>
-                    <span class="logo-sub">피부과 가이드</span>
+                    <span class="logo-sub">서울 피부과 가이드</span>
                 </a>
                 <span class="db-count" id="dbCount">0개 시술</span>
             </div>
@@ -45,19 +45,44 @@
             <section class="view-panel active" id="view-landing">
                 <div class="landing-fullscreen">
                     <div class="landing-left">
-                        <div class="landing-badge">Skinn.kr 피부과 가이드</div>
+                        <div class="landing-badge">서울 피부과 가이드</div>
                         <h1 class="landing-title">피부과 시술,<br><span class="highlight">준비된 상태</span>로<br>상담받으세요</h1>
                         <p class="landing-subtitle">
-                            100개가 넘는 시술명, 피부과마다 다른 가격.<br>
-                            무엇을 선택해야 할지 막막하셨죠?<br><br>
-                            <strong>이제는 객관적인 데이터로 미리 준비하세요.</strong><br>
-                            나에게 맞는 시술이 무엇인지, 적정 가격은 얼마인지<br>
-                            알고 가면 상담 결과가 달라집니다.
+                            1,000개 피부과 정보와 15만 건의 후기 데이터.<br>
+                            <strong>나에게 맞는 시술과 적정 가격</strong>을 미리 파악하고<br>
+                            주도적으로 상담받으세요.
                         </p>
                         <button class="cta-button-main" onclick="switchToView('consult')">
                             AI 맞춤 상담 시작하기
                         </button>
-                        
+
+                        <div class="landing-features">
+                            <div class="feature-item">
+                                <span class="feature-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                </span>
+                                <span class="feature-text">예산에 맞는 시술 조합 추천</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                </span>
+                                <span class="feature-text">다운타임 · 통증 수준 비교</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                </span>
+                                <span class="feature-text">피부과 전문의 검증 정보</span>
+                            </div>
+                        </div>
+
                         <div class="landing-stats-bar">
                             <div class="stat-item">
                                 <span class="stat-num">1,000+</span>
@@ -77,51 +102,51 @@
                     </div>
                     
                     <div class="landing-right">
-                        <div class="landing-card main" onclick="switchToView('consult')">
-                            <div class="card-badge">추천</div>
-                            <span class="card-title">AI 맞춤 시술 상담</span>
-                            <p class="card-desc">
-                                나이, 피부 고민, 예산, 다운타임 허용 범위를 입력하면<br>
-                                <strong>나에게 최적화된 시술 조합 3가지</strong>를 추천받을 수 있어요.
-                            </p>
-                            <div class="card-features">
-                                <span>예산 최적화</span>
-                                <span>시술 순서 안내</span>
-                                <span>주의사항 체크리스트</span>
-                            </div>
+                        <!-- Hero Image -->
+                        <div class="landing-hero-image">
+                            <img src="images/bg.png" alt="건강한 피부" class="hero-img">
+                            <div class="hero-overlay"></div>
                         </div>
-                        
+
                         <div class="landing-card-row">
-                            <div class="landing-card" onclick="switchToView('concern')">
-                                <span class="card-icon">🔍</span>
-                                <span class="card-title">고민별 시술 찾기</span>
-                                <p class="card-desc-small">주름, 탄력, 모공, 기미 등<br>내 고민에 맞는 시술만 탐색</p>
+                            <div class="landing-card horizontal" onclick="switchToView('concern')">
+                                <span class="card-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="11" cy="11" r="8"/>
+                                        <path d="M21 21l-4.35-4.35"/>
+                                    </svg>
+                                </span>
+                                <div class="card-content">
+                                    <span class="card-title">고민별 시술 찾기</span>
+                                    <p class="card-desc-small">주름, 탄력, 모공, 기미 등 내 고민에 맞는 시술</p>
+                                </div>
+                                <span class="card-arrow">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M9 18l6-6-6-6"/>
+                                    </svg>
+                                </span>
                             </div>
-                            <div class="landing-card" onclick="switchToView('filter')">
-                                <span class="card-icon">📋</span>
-                                <span class="card-title">전체 시술 검색</span>
-                                <p class="card-desc-small"><span class="dynamic-count"></span>개 시술 정보를<br>자유롭게 비교하고 검색</p>
+                            <div class="landing-card horizontal" onclick="switchToView('filter')">
+                                <span class="card-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="7" height="7" rx="1"/>
+                                        <rect x="14" y="3" width="7" height="7" rx="1"/>
+                                        <rect x="3" y="14" width="7" height="7" rx="1"/>
+                                        <rect x="14" y="14" width="7" height="7" rx="1"/>
+                                    </svg>
+                                </span>
+                                <div class="card-content">
+                                    <span class="card-title">전체 시술 검색</span>
+                                    <p class="card-desc-small"><span class="dynamic-count"></span>개 시술 자유롭게 비교</p>
+                                </div>
+                                <span class="card-arrow">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M9 18l6-6-6-6"/>
+                                    </svg>
+                                </span>
                             </div>
                         </div>
-                        
-                        <div class="landing-trust-text">
-                            <p class="trust-intro">
-                                피부과에 가면 상담사가 추천하는 대로 결정하게 되는 경우가 많습니다.<br>
-                                시술명도 생소하고, 가격이 적정한지 판단하기도 어렵죠.
-                            </p>
-                            <p class="trust-solution">
-                                <strong>Skinn.kr 피부과 가이드</strong>는 서울 소재 <strong>1,000개 이상의 피부과</strong>에서 제공하는 시술 정보를 수집하고, 
-                                지난 3년간 축적된 <strong>15만 건 이상의 실제 시술 후기</strong>를 분석하여 만들어졌습니다.
-                            </p>
-                            <p class="trust-expert">
-                                또한 <strong>10명 이상의 피부과 전문의</strong>가 직접 참여하여, 과학적이고 객관적인 방법론을 기반으로
-                                추천 엔진과 시술 데이터베이스를 개발했습니다.
-                            </p>
-                            <p class="trust-closing">
-                                이 데이터를 바탕으로 <strong><span class="dynamic-count"></span>개의 검증된 시술 정보</strong>를 정리했습니다.<br>
-                                이제 미리 준비하고, 주도적으로 상담받으세요.
-                            </p>
-                        </div>
+
                     </div>
                 </div>
                 <div class="landing-footer-bar">
@@ -139,14 +164,14 @@
                                 <svg viewBox="0 0 48 48" fill="none">
                                     <defs>
                                         <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                            <stop offset="0%" stop-color="#4338ca"/>
-                                            <stop offset="100%" stop-color="#6366f1"/>
+                                            <stop offset="0%" stop-color="#059669"/>
+                                            <stop offset="100%" stop-color="#10b981"/>
                                         </linearGradient>
                                     </defs>
                                     <circle cx="24" cy="24" r="22" fill="url(#avatarGrad)"/>
                                     <!-- AI 뉴런 패턴 -->
                                     <circle cx="24" cy="24" r="6" fill="white" opacity="0.95"/>
-                                    <circle cx="24" cy="24" r="3" fill="#4338ca"/>
+                                    <circle cx="24" cy="24" r="3" fill="#059669"/>
                                     <circle cx="14" cy="16" r="3" fill="white" opacity="0.8"/>
                                     <circle cx="34" cy="16" r="3" fill="white" opacity="0.8"/>
                                     <circle cx="14" cy="32" r="3" fill="white" opacity="0.8"/>
@@ -545,8 +570,8 @@
                                     </linearGradient>
                                 </defs>
                                 <circle cx="24" cy="24" r="20" fill="url(#grad1)" opacity="0.4"/>
-                                <path d="M16 18 L16 28 Q16 34 24 36 Q32 34 32 28 L32 18" stroke="#4338ca" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                                <path d="M20 26 L24 32 L28 26" stroke="#4338ca" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                                <path d="M16 18 L16 28 Q16 34 24 36 Q32 34 32 28 L32 18" stroke="#059669" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                                <path d="M20 26 L24 32 L28 26" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
                             </svg>
                         </div>
                         <div class="concern-content">
@@ -565,9 +590,9 @@
                         <div class="concern-icon">
                             <svg viewBox="0 0 48 48" fill="none">
                                 <circle cx="24" cy="24" r="20" fill="#c7d2fe" opacity="0.4"/>
-                                <path d="M12 18 Q24 14 36 18" stroke="#4338ca" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                                <path d="M12 26 Q24 22 36 26" stroke="#4338ca" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                                <path d="M12 34 Q24 30 36 34" stroke="#4338ca" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                                <path d="M12 18 Q24 14 36 18" stroke="#059669" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                                <path d="M12 26 Q24 22 36 26" stroke="#059669" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                                <path d="M12 34 Q24 30 36 34" stroke="#059669" stroke-width="2.5" stroke-linecap="round" fill="none"/>
                             </svg>
                         </div>
                         <div class="concern-content">
@@ -586,8 +611,8 @@
                         <div class="concern-icon">
                             <svg viewBox="0 0 48 48" fill="none">
                                 <circle cx="24" cy="24" r="20" fill="#c7d2fe" opacity="0.4"/>
-                                <circle cx="24" cy="24" r="12" stroke="#4338ca" stroke-width="2.5" stroke-dasharray="4 3" fill="none"/>
-                                <circle cx="24" cy="24" r="5" fill="#4338ca" opacity="0.6"/>
+                                <circle cx="24" cy="24" r="12" stroke="#059669" stroke-width="2.5" stroke-dasharray="4 3" fill="none"/>
+                                <circle cx="24" cy="24" r="5" fill="#059669" opacity="0.6"/>
                             </svg>
                         </div>
                         <div class="concern-content">
@@ -606,11 +631,11 @@
                         <div class="concern-icon">
                             <svg viewBox="0 0 48 48" fill="none">
                                 <circle cx="24" cy="24" r="20" fill="#c7d2fe" opacity="0.4"/>
-                                <circle cx="16" cy="16" r="4" fill="#4338ca" opacity="0.7"/>
-                                <circle cx="32" cy="18" r="3" fill="#4338ca" opacity="0.5"/>
-                                <circle cx="24" cy="26" r="5" fill="#4338ca" opacity="0.6"/>
-                                <circle cx="14" cy="30" r="2.5" fill="#4338ca" opacity="0.4"/>
-                                <circle cx="34" cy="32" r="3" fill="#4338ca" opacity="0.5"/>
+                                <circle cx="16" cy="16" r="4" fill="#059669" opacity="0.7"/>
+                                <circle cx="32" cy="18" r="3" fill="#059669" opacity="0.5"/>
+                                <circle cx="24" cy="26" r="5" fill="#059669" opacity="0.6"/>
+                                <circle cx="14" cy="30" r="2.5" fill="#059669" opacity="0.4"/>
+                                <circle cx="34" cy="32" r="3" fill="#059669" opacity="0.5"/>
                             </svg>
                         </div>
                         <div class="concern-content">
@@ -629,9 +654,9 @@
                         <div class="concern-icon">
                             <svg viewBox="0 0 48 48" fill="none">
                                 <circle cx="24" cy="24" r="20" fill="#c7d2fe" opacity="0.4"/>
-                                <ellipse cx="16" cy="22" rx="6" ry="4" fill="#4338ca" opacity="0.5"/>
-                                <ellipse cx="32" cy="22" rx="6" ry="4" fill="#4338ca" opacity="0.5"/>
-                                <circle cx="24" cy="34" r="3" fill="#4338ca" opacity="0.4"/>
+                                <ellipse cx="16" cy="22" rx="6" ry="4" fill="#059669" opacity="0.5"/>
+                                <ellipse cx="32" cy="22" rx="6" ry="4" fill="#059669" opacity="0.5"/>
+                                <circle cx="24" cy="34" r="3" fill="#059669" opacity="0.4"/>
                             </svg>
                         </div>
                         <div class="concern-content">
@@ -650,10 +675,10 @@
                         <div class="concern-icon">
                             <svg viewBox="0 0 48 48" fill="none">
                                 <circle cx="24" cy="24" r="20" fill="#c7d2fe" opacity="0.4"/>
-                                <circle cx="16" cy="18" r="4" fill="#4338ca" opacity="0.7"/>
-                                <circle cx="32" cy="20" r="3.5" fill="#4338ca" opacity="0.6"/>
-                                <circle cx="20" cy="32" r="4" fill="#4338ca" opacity="0.7"/>
-                                <circle cx="34" cy="30" r="2.5" fill="#4338ca" opacity="0.5"/>
+                                <circle cx="16" cy="18" r="4" fill="#059669" opacity="0.7"/>
+                                <circle cx="32" cy="20" r="3.5" fill="#059669" opacity="0.6"/>
+                                <circle cx="20" cy="32" r="4" fill="#059669" opacity="0.7"/>
+                                <circle cx="34" cy="30" r="2.5" fill="#059669" opacity="0.5"/>
                             </svg>
                         </div>
                         <div class="concern-content">
@@ -672,9 +697,9 @@
                         <div class="concern-icon">
                             <svg viewBox="0 0 48 48" fill="none">
                                 <circle cx="24" cy="24" r="20" fill="#c7d2fe" opacity="0.4"/>
-                                <path d="M14 20 Q14 32 24 36 Q34 32 34 20" stroke="#4338ca" stroke-width="2.5" stroke-linecap="round" fill="none" stroke-dasharray="5 3"/>
-                                <circle cx="18" cy="26" r="4" stroke="#4338ca" stroke-width="2" stroke-dasharray="3 2" fill="none"/>
-                                <circle cx="30" cy="26" r="4" stroke="#4338ca" stroke-width="2" stroke-dasharray="3 2" fill="none"/>
+                                <path d="M14 20 Q14 32 24 36 Q34 32 34 20" stroke="#059669" stroke-width="2.5" stroke-linecap="round" fill="none" stroke-dasharray="5 3"/>
+                                <circle cx="18" cy="26" r="4" stroke="#059669" stroke-width="2" stroke-dasharray="3 2" fill="none"/>
+                                <circle cx="30" cy="26" r="4" stroke="#059669" stroke-width="2" stroke-dasharray="3 2" fill="none"/>
                             </svg>
                         </div>
                         <div class="concern-content">
@@ -693,9 +718,9 @@
                         <div class="concern-icon">
                             <svg viewBox="0 0 48 48" fill="none">
                                 <circle cx="24" cy="24" r="20" fill="#c7d2fe" opacity="0.4"/>
-                                <rect x="12" y="16" rx="2" width="8" height="6" fill="#4338ca" opacity="0.5"/>
-                                <rect x="26" y="20" rx="2" width="10" height="5" fill="#4338ca" opacity="0.6"/>
-                                <rect x="16" y="28" rx="2" width="12" height="6" fill="#4338ca" opacity="0.4"/>
+                                <rect x="12" y="16" rx="2" width="8" height="6" fill="#059669" opacity="0.5"/>
+                                <rect x="26" y="20" rx="2" width="10" height="5" fill="#059669" opacity="0.6"/>
+                                <rect x="16" y="28" rx="2" width="12" height="6" fill="#059669" opacity="0.4"/>
                             </svg>
                         </div>
                         <div class="concern-content">
@@ -714,10 +739,10 @@
                         <div class="concern-icon">
                             <svg viewBox="0 0 48 48" fill="none">
                                 <circle cx="24" cy="24" r="20" fill="#c7d2fe" opacity="0.4"/>
-                                <path d="M20 12 L20 36" stroke="#4338ca" stroke-width="2.5" stroke-linecap="round"/>
-                                <path d="M28 12 L28 36" stroke="#4338ca" stroke-width="2.5" stroke-linecap="round"/>
-                                <path d="M14 20 L34 20" stroke="#4338ca" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-                                <path d="M14 28 L34 28" stroke="#4338ca" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                                <path d="M20 12 L20 36" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/>
+                                <path d="M28 12 L28 36" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/>
+                                <path d="M14 20 L34 20" stroke="#059669" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                                <path d="M14 28 L34 28" stroke="#059669" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
                             </svg>
                         </div>
                         <div class="concern-content">
@@ -736,11 +761,11 @@
                         <div class="concern-icon">
                             <svg viewBox="0 0 48 48" fill="none">
                                 <circle cx="24" cy="24" r="20" fill="#c7d2fe" opacity="0.4"/>
-                                <circle cx="24" cy="12" r="5" fill="#4338ca" opacity="0.7"/>
-                                <path d="M24 17 L24 28" stroke="#4338ca" stroke-width="3" stroke-linecap="round"/>
-                                <path d="M24 28 L18 38" stroke="#4338ca" stroke-width="2.5" stroke-linecap="round"/>
-                                <path d="M24 28 L30 38" stroke="#4338ca" stroke-width="2.5" stroke-linecap="round"/>
-                                <path d="M16 22 L24 20 L32 22" stroke="#4338ca" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                                <circle cx="24" cy="12" r="5" fill="#059669" opacity="0.7"/>
+                                <path d="M24 17 L24 28" stroke="#059669" stroke-width="3" stroke-linecap="round"/>
+                                <path d="M24 28 L18 38" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/>
+                                <path d="M24 28 L30 38" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/>
+                                <path d="M16 22 L24 20 L32 22" stroke="#059669" stroke-width="2.5" stroke-linecap="round" fill="none"/>
                             </svg>
                         </div>
                         <div class="concern-content">
@@ -759,11 +784,11 @@
                         <div class="concern-icon">
                             <svg viewBox="0 0 48 48" fill="none">
                                 <circle cx="24" cy="24" r="20" fill="#c7d2fe" opacity="0.4"/>
-                                <ellipse cx="24" cy="26" rx="12" ry="10" fill="#4338ca" opacity="0.3"/>
-                                <path d="M14 22 Q18 14 24 14 Q30 14 34 22" stroke="#4338ca" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                                <path d="M18 10 L16 6" stroke="#4338ca" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-                                <path d="M24 8 L24 4" stroke="#4338ca" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-                                <path d="M30 10 L32 6" stroke="#4338ca" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                                <ellipse cx="24" cy="26" rx="12" ry="10" fill="#059669" opacity="0.3"/>
+                                <path d="M14 22 Q18 14 24 14 Q30 14 34 22" stroke="#059669" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                                <path d="M18 10 L16 6" stroke="#059669" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                                <path d="M24 8 L24 4" stroke="#059669" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                                <path d="M30 10 L32 6" stroke="#059669" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
                             </svg>
                         </div>
                         <div class="concern-content">
@@ -782,10 +807,10 @@
                         <div class="concern-icon">
                             <svg viewBox="0 0 48 48" fill="none">
                                 <circle cx="24" cy="24" r="20" fill="#c7d2fe" opacity="0.4"/>
-                                <circle cx="16" cy="16" r="5" fill="#4338ca" opacity="0.8"/>
-                                <circle cx="32" cy="20" r="3.5" fill="#4338ca" opacity="0.6"/>
-                                <circle cx="20" cy="32" r="4" fill="#4338ca" opacity="0.7"/>
-                                <circle cx="34" cy="34" r="2.5" fill="#4338ca" opacity="0.5"/>
+                                <circle cx="16" cy="16" r="5" fill="#059669" opacity="0.8"/>
+                                <circle cx="32" cy="20" r="3.5" fill="#059669" opacity="0.6"/>
+                                <circle cx="20" cy="32" r="4" fill="#059669" opacity="0.7"/>
+                                <circle cx="34" cy="34" r="2.5" fill="#059669" opacity="0.5"/>
                             </svg>
                         </div>
                         <div class="concern-content">
@@ -804,10 +829,10 @@
                         <div class="concern-icon">
                             <svg viewBox="0 0 48 48" fill="none">
                                 <circle cx="24" cy="24" r="20" fill="#c7d2fe" opacity="0.4"/>
-                                <path d="M18 14 L18 20 Q18 24 22 24 L26 24 Q30 24 30 20 L30 14" stroke="#4338ca" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                                <path d="M16 28 Q16 32 18 34" stroke="#4338ca" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
-                                <path d="M24 30 Q24 34 24 38" stroke="#4338ca" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
-                                <path d="M32 28 Q32 32 30 34" stroke="#4338ca" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+                                <path d="M18 14 L18 20 Q18 24 22 24 L26 24 Q30 24 30 20 L30 14" stroke="#059669" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                                <path d="M16 28 Q16 32 18 34" stroke="#059669" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+                                <path d="M24 30 Q24 34 24 38" stroke="#059669" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+                                <path d="M32 28 Q32 32 30 34" stroke="#059669" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
                             </svg>
                         </div>
                         <div class="concern-content">
@@ -826,9 +851,9 @@
                         <div class="concern-icon">
                             <svg viewBox="0 0 48 48" fill="none">
                                 <circle cx="24" cy="24" r="20" fill="#c7d2fe" opacity="0.4"/>
-                                <rect x="10" y="24" rx="3" width="28" height="14" fill="#4338ca" opacity="0.3"/>
-                                <path d="M10 24 Q18 16 24 20 Q30 24 38 18" stroke="#4338ca" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                                <path d="M12 20 Q20 12 28 16 Q36 20 40 14" stroke="#4338ca" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5"/>
+                                <rect x="10" y="24" rx="3" width="28" height="14" fill="#059669" opacity="0.3"/>
+                                <path d="M10 24 Q18 16 24 20 Q30 24 38 18" stroke="#059669" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                                <path d="M12 20 Q20 12 28 16 Q36 20 40 14" stroke="#059669" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5"/>
                             </svg>
                         </div>
                         <div class="concern-content">
@@ -847,8 +872,8 @@
                         <div class="concern-icon">
                             <svg viewBox="0 0 48 48" fill="none">
                                 <circle cx="24" cy="24" r="20" fill="#c7d2fe" opacity="0.4"/>
-                                <path d="M20 10 L20 14 L28 14 L28 10 Q28 6 24 6 Q20 6 20 10Z" fill="#4338ca" opacity="0.6"/>
-                                <rect x="16" y="14" rx="4" width="16" height="28" fill="#4338ca" opacity="0.7"/>
+                                <path d="M20 10 L20 14 L28 14 L28 10 Q28 6 24 6 Q20 6 20 10Z" fill="#059669" opacity="0.6"/>
+                                <rect x="16" y="14" rx="4" width="16" height="28" fill="#059669" opacity="0.7"/>
                                 <path d="M20 22 L28 22" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
                                 <path d="M24 18 L24 26" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
                             </svg>

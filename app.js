@@ -4064,7 +4064,7 @@ function displayResult(response) {
                 </div>
                 
                 <!-- 분석 과정 시각화 (깔때기) -->
-                <div class="funnel-title">Skinn.kr 피부과 가이드 분석 프로세스</div>
+                <div class="funnel-title">Skinn.kr 서울 피부과 가이드 분석 프로세스</div>
                 <div class="funnel-container">
                     <div class="funnel-step step-1">
                         <div class="funnel-step-content">
