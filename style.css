@@ -4167,8 +4167,8 @@ textarea.text-input.tall {
 #view-landing {
     background: linear-gradient(165deg, #fafffe 0%, #ffffff 40%, #f8fdfb 100%);
     position: relative;
-    overflow: hidden;
-    height: calc(100vh - 85px);
+    overflow-y: auto;
+    min-height: calc(100vh - 56px);
 }
 
 /* Layered gradient mesh background */
