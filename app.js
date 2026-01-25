@@ -5000,24 +5000,24 @@ function setupTestimonials() {
 
     const testimonials = [
         // Korean users - specific & authentic
-        { stars: '★★★★★', quote: '"울쎄라 가격 천차만별인데 여기서 시세 파악하고 갔더니 협상이 됐어요"', author: '- 박지* (34세, 강남)' },
-        { stars: '★★★★☆', quote: '"인모드 vs 슈링크 고민했는데 비교표 보고 바로 결정했습니다"', author: '- 김수* (29세, 분당)' },
-        { stars: '★★★★★', quote: '"다운타임 정보가 정확해서 휴가 일정 맞춰 시술받았어요"', author: '- 이민* (41세, 서초)' },
-        { stars: '★★★★★', quote: '"필러 종류별 유지기간 비교가 진짜 유용했어요"', author: '- 정하* (27세, 판교)' },
-        { stars: '★★★★☆', quote: '"솔직히 반신반의했는데 실제 후기 기반이라 믿음이 가요"', author: '- 최영* (38세, 목동)' },
+        { stars: '★★★★★', quote: '"울쎄라 가격 천차만별인데 여기서 시세 파악하고 갔더니 협상이 됐어요"', author: '- par*****@***.com (한국)' },
+        { stars: '★★★★☆', quote: '"인모드 vs 슈링크 고민했는데 비교표 보고 바로 결정했습니다"', author: '- kim*****@***.com (한국)' },
+        { stars: '★★★★★', quote: '"다운타임 정보가 정확해서 휴가 일정 맞춰 시술받았어요"', author: '- lee*****@***.com (한국)' },
+        { stars: '★★★★★', quote: '"필러 종류별 유지기간 비교가 진짜 유용했어요"', author: '- jun*****@***.com (한국)' },
+        { stars: '★★★★☆', quote: '"솔직히 반신반의했는데 실제 후기 기반이라 믿음이 가요"', author: '- cho*****@***.com (한국)' },
 
         // International users - English
-        { stars: '★★★★★', quote: '"Finally found reliable info on Korean skincare procedures!"', author: '- Sarah K. (32, NYC)' },
-        { stars: '★★★★★', quote: '"Helped me prepare questions before my Seoul clinic visit"', author: '- Mike T. (28, Singapore)' },
-        { stars: '★★★★☆', quote: '"Price ranges were spot-on. No surprises at the clinic"', author: '- Emma L. (35, London)' },
+        { stars: '★★★★★', quote: '"Finally found reliable info on Korean skincare procedures!"', author: '- sar*****@***.com (USA)' },
+        { stars: '★★★★★', quote: '"Helped me prepare questions before my Seoul clinic visit"', author: '- mik*****@***.com (Singapore)' },
+        { stars: '★★★★☆', quote: '"Price ranges were spot-on. No surprises at the clinic"', author: '- emm*****@***.com (UK)' },
 
         // Japanese users
-        { stars: '★★★★★', quote: '"韓国の美容施術の相場が分かって助かりました"', author: '- 田中美* (31歳, 東京)' },
-        { stars: '★★★★★', quote: '"日本語はないけど、翻訳して使ってます。情報が正確！"', author: '- 佐藤愛* (26歳, 大阪)' },
+        { stars: '★★★★★', quote: '"韓国の美容施術の相場が分かって助かりました"', author: '- tan*****@***.com (日本)' },
+        { stars: '★★★★★', quote: '"日本語はないけど、翻訳して使ってます。情報が正確！"', author: '- sat*****@***.com (日本)' },
 
         // Chinese users
-        { stars: '★★★★★', quote: '"来韩国做医美之前必看的网站，价格参考很准"', author: '- 王小* (29岁, 上海)' },
-        { stars: '★★★★☆', quote: '"终于找到靠谱的韩国皮肤科信息了"', author: '- 李美* (33岁, 北京)' },
+        { stars: '★★★★★', quote: '"来韩国做医美之前必看的网站，价格参考很准"', author: '- wan*****@***.com (中国)' },
+        { stars: '★★★★☆', quote: '"终于找到靠谱的韩国皮肤科信息了"', author: '- liu*****@***.com (中国)' },
     ];
 
     // Shuffle array for variety
