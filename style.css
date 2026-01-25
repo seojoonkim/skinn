@@ -12172,6 +12172,8 @@ button:focus-visible {
     position: relative;
     overflow: hidden;
     text-align: center;
+    flex: 1;
+    min-width: 0;
 }
 
 .trust-badge-pro::before {
