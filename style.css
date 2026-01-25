@@ -1514,9 +1514,7 @@ body {
     background: white;
     border: 1px solid var(--slate-200);
     border-radius: var(--radius-lg);
-    overflow-y: auto;
-    overflow-x: hidden;
-    max-height: 70vh;
+    overflow: hidden;
 }
 
 .data-table {
@@ -1526,7 +1524,7 @@ body {
     table-layout: fixed;
 }
 
-/* 고정 헤더 */
+/* 테이블 헤더 */
 .data-table th {
     padding: 14px 16px;
     text-align: left;
@@ -1536,9 +1534,6 @@ body {
     background: var(--slate-50);
     border-bottom: 2px solid var(--slate-200);
     white-space: nowrap;
-    position: sticky;
-    top: 0;
-    z-index: 10;
 }
 
 .data-table th.sortable {
