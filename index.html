@@ -1207,16 +1207,20 @@
     </div>
 
     <script>
-        // 폰트 로딩 완료 감지 - 빠른 표시 우선
-        const showPage = () => document.documentElement.classList.add('fonts-loaded');
+        // 폰트 로딩 완료 후 표시
+        const showPage = () => {
+            if (!document.documentElement.classList.contains('fonts-loaded')) {
+                document.documentElement.classList.add('fonts-loaded');
+            }
+        };
 
-        // 최대 대기 시간 100ms (빠른 표시 우선)
-        setTimeout(showPage, 100);
-
-        // 폰트 로딩 완료 시에도 표시
+        // 폰트 로딩 완료 시 표시
         if (document.fonts && document.fonts.ready) {
             document.fonts.ready.then(showPage);
         }
+
+        // 최대 대기 시간 300ms (폴백)
+        setTimeout(showPage, 300);
     </script>
     <script src="db_extended.js"></script>
     <script src="treatment_images.js"></script>
