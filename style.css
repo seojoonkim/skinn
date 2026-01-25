@@ -1514,7 +1514,6 @@ body {
     background: white;
     border: 1px solid var(--slate-200);
     border-radius: var(--radius-lg);
-    overflow: hidden;
 }
 
 .data-table {
