@@ -1524,7 +1524,7 @@ body {
     table-layout: fixed;
 }
 
-/* 테이블 헤더 */
+/* 테이블 헤더 - 페이지 스크롤 시 고정 */
 .data-table th {
     padding: 14px 16px;
     text-align: left;
@@ -1534,6 +1534,9 @@ body {
     background: var(--slate-50);
     border-bottom: 2px solid var(--slate-200);
     white-space: nowrap;
+    position: sticky;
+    top: 56px;
+    z-index: 10;
 }
 
 .data-table th.sortable {
