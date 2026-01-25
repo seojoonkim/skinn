@@ -278,7 +278,7 @@ html, body {
 }
 
 body {
-    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-family: 'Pretendard', 'Pretendard Fallback', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     background: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
