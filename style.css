@@ -304,7 +304,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 32px;
     height: 56px;
@@ -4172,25 +4172,11 @@ textarea.text-input.tall {
 
 /* ===== Landing Page - Fullscreen Layout ===== */
 #view-landing {
-    background: linear-gradient(165deg, #fafffe 0%, #ffffff 50%, #ffffff 100%);
+    background: #ffffff;
     position: relative;
     width: 100%;
     max-width: 100vw;
 }
-
-/* Subtle gradient background */
-#view-landing::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(ellipse 80% 60% at 70% 20%, rgba(16, 185, 129, 0.06) 0%, transparent 50%);
-    pointer-events: none;
-}
-
-/* Remove dot pattern for cleaner look */
 
 .landing-fullscreen {
     display: flex;
@@ -4300,7 +4286,7 @@ textarea.text-input.tall {
     cursor: pointer;
     transition: all 0.2s ease;
     margin-bottom: 28px;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     position: relative;
     animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
     letter-spacing: -0.01em;
@@ -4316,7 +4302,7 @@ textarea.text-input.tall {
 .cta-button-main:hover {
     background: var(--emerald-600);
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 }
 
 .cta-button-main:hover::after {
@@ -4325,7 +4311,7 @@ textarea.text-input.tall {
 
 .cta-button-main:active {
     transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 /* Landing Features */
@@ -4414,14 +4400,11 @@ textarea.text-input.tall {
 .landing-hero-image {
     position: relative;
     width: 100%;
-    border-radius: 24px;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow:
-        0 32px 80px rgba(16, 185, 129, 0.15),
-        0 16px 40px rgba(15, 23, 42, 0.1),
-        0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
     animation: heroFloat 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
-    border: 1px solid rgba(16, 185, 129, 0.1);
+    border: 1px solid var(--slate-200);
 }
 
 @keyframes heroFloat {
@@ -4435,19 +4418,8 @@ textarea.text-input.tall {
     }
 }
 
-.landing-hero-image::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    background: var(--emerald-400);
-    border-radius: inherit;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.landing-hero-image:hover::before {
-    opacity: 0.6;
+.landing-hero-image:hover {
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.15);
 }
 
 .hero-img {
@@ -4861,13 +4833,10 @@ textarea.text-input.tall {
     #view-landing {
         height: auto;
         padding-bottom: 100px;
-        background: linear-gradient(180deg, #fafffe 0%, #ffffff 40%, #ffffff 100%);
+        background: #ffffff;
     }
 
-    #view-landing::before {
-        background: radial-gradient(ellipse 100% 50% at 50% 0%, rgba(16, 185, 129, 0.06) 0%, transparent 50%);
-    }
-
+    #view-landing::before,
     #view-landing::after {
         display: none;
     }
@@ -4915,24 +4884,12 @@ textarea.text-input.tall {
         gap: 18px;
         margin-bottom: 20px;
         padding: 20px;
-        background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(250, 253, 251, 0.9) 100%);
-        border-radius: 24px;
-        border: 1px solid rgba(16, 185, 129, 0.12);
-        box-shadow:
-            0 8px 32px rgba(16, 185, 129, 0.08),
-            0 2px 8px rgba(0, 0, 0, 0.04);
+        background: #ffffff;
+        border-radius: 20px;
+        border: 1px solid var(--slate-200);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
         position: relative;
         overflow: hidden;
-    }
-
-    .mobile-hero-row::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: var(--emerald-500);
     }
 
     .mobile-hero-text {
@@ -4952,7 +4909,7 @@ textarea.text-input.tall {
         letter-spacing: 0.08em;
         text-transform: uppercase;
         border-radius: 20px;
-        box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }
 
     .mobile-hero-text .landing-badge::before {
@@ -4983,21 +4940,11 @@ textarea.text-input.tall {
         width: 105px;
         height: 125px;
         flex-shrink: 0;
-        border-radius: 18px;
+        border-radius: 16px;
         overflow: hidden;
-        box-shadow:
-            0 12px 40px rgba(16, 185, 129, 0.2),
-            0 4px 12px rgba(0, 0, 0, 0.08);
-        border: 2px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        border: 1px solid var(--slate-200);
         position: relative;
-    }
-
-    .mobile-hero-img::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(180deg, transparent 60%, rgba(16, 185, 129, 0.1) 100%);
-        pointer-events: none;
     }
 
     .mobile-hero-img img {
