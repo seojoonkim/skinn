@@ -902,7 +902,7 @@ body {
 /* ===== View 2: 맞춤 필터 ===== */
 .filter-container {
     display: grid;
-    grid-template-columns: 260px 1fr;
+    grid-template-columns: 234px 1fr;
     gap: 20px;
 }
 
@@ -1482,7 +1482,7 @@ body {
 /* ===== View 4: 테이블 뷰 ===== */
 .table-layout {
     display: grid;
-    grid-template-columns: 260px 1fr;
+    grid-template-columns: 234px 1fr;
     gap: 20px;
 }
 
@@ -2353,7 +2353,7 @@ body {
     
     .filter-container,
     .table-layout {
-        grid-template-columns: 220px 1fr;
+        grid-template-columns: 198px 1fr;
         gap: 16px;
     }
     
