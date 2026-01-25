@@ -344,23 +344,25 @@ body {
 }
 
 .auth-btn {
-    padding: 6px 12px;
+    padding: 7px 14px;
     font-size: 13px;
     font-weight: 500;
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.15s ease;
     border: none;
-    background: transparent;
 }
 
 .login-btn {
-    color: var(--slate-600);
+    color: var(--slate-700);
+    background: var(--slate-100);
+    border: 1px solid var(--slate-200);
 }
 
 .login-btn:hover {
     color: var(--slate-900);
-    background: var(--slate-100);
+    background: var(--slate-200);
+    border-color: var(--slate-300);
 }
 
 .signup-btn {
