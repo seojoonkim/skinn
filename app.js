@@ -103,10 +103,10 @@ function updateConcernCounts() {
 
 // ===== View Tabs =====
 function setupViewTabs() {
-    // Support both old and new tab systems
+    // Support multiple tab systems
     const oldTabs = document.querySelectorAll('.view-tab');
     const newTabs = document.querySelectorAll('.view-tab-new');
-    const slider = document.getElementById('tabsSlider');
+    const navTabs = document.querySelectorAll('.nav-tab');
 
     // Setup old tabs (legacy)
     oldTabs.forEach(tab => {
@@ -116,7 +116,7 @@ function setupViewTabs() {
         });
     });
 
-    // Setup new enhanced tabs
+    // Setup new enhanced tabs (legacy)
     newTabs.forEach(tab => {
         tab.addEventListener('click', () => {
             const view = tab.dataset.view;
@@ -124,16 +124,19 @@ function setupViewTabs() {
         });
     });
 
-    // Initialize slider position
-    if (slider && newTabs.length > 0) {
-        updateTabSlider();
-    }
+    // Setup nav tabs (current)
+    navTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const view = tab.dataset.view;
+            switchToView(view);
+        });
+    });
 }
 
-// Update sliding indicator position
+// Update sliding indicator position (legacy)
 function updateTabSlider() {
     const slider = document.getElementById('tabsSlider');
-    const activeTab = document.querySelector('.view-tab-new.active');
+    const activeTab = document.querySelector('.view-tab-new.active, .nav-tab.active');
 
     if (!slider || !activeTab) {
         if (slider) slider.classList.remove('visible');
@@ -159,7 +162,7 @@ function switchToView(view, updateHash = true) {
     const oldTargetTab = document.querySelector(`.view-tab[data-view="${view}"]`);
     if (oldTargetTab) oldTargetTab.classList.add('active');
 
-    // Update new tab active state
+    // Update new tab active state (legacy)
     const newTabs = document.querySelectorAll('.view-tab-new');
     newTabs.forEach(t => {
         t.classList.remove('active');
@@ -169,6 +172,18 @@ function switchToView(view, updateHash = true) {
     if (newTargetTab) {
         newTargetTab.classList.add('active');
         newTargetTab.setAttribute('aria-selected', 'true');
+    }
+
+    // Update nav tab active state (current)
+    const navTabs = document.querySelectorAll('.nav-tab');
+    navTabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+    });
+    const navTargetTab = document.querySelector(`.nav-tab[data-view="${view}"]`);
+    if (navTargetTab) {
+        navTargetTab.classList.add('active');
+        navTargetTab.setAttribute('aria-selected', 'true');
     }
 
     // Update sliding indicator

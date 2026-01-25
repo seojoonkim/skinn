@@ -17,74 +17,23 @@
     <div id="app">
         <!-- Header -->
         <header class="header">
-            <!-- Utility Bar: Auth & Language -->
-            <div class="header-utility">
-                <div class="header-utility-inner">
-                    <div class="utility-left"></div>
-                    <div class="utility-right">
-                        <div class="auth-buttons">
-                            <button class="auth-btn login-btn" id="loginBtn">로그인</button>
-                            <button class="auth-btn signup-btn" id="signupBtn">회원가입</button>
-                        </div>
-                        <div class="lang-divider"></div>
-                        <div class="lang-selector" id="langSelector">
-                            <button class="lang-btn active" data-lang="ko">한</button>
-                            <button class="lang-btn" data-lang="en">EN</button>
-                            <button class="lang-btn" data-lang="ja">日</button>
-                            <button class="lang-btn" data-lang="zh">中</button>
-                        </div>
+            <div class="header-single">
+                <a href="./" class="logo-link logo-main" onclick="goToLanding(event)">Skinn.kr</a>
+                <nav class="nav-tabs" role="tablist">
+                    <button class="nav-tab" data-view="consult" role="tab" aria-selected="false">AI 상담</button>
+                    <button class="nav-tab" data-view="concern" role="tab" aria-selected="false">고민별</button>
+                    <button class="nav-tab" data-view="filter" role="tab" aria-selected="false">카드뷰</button>
+                    <button class="nav-tab" data-view="table" role="tab" aria-selected="false">테이블</button>
+                </nav>
+                <div class="header-actions">
+                    <div class="lang-selector" id="langSelector">
+                        <button class="lang-btn active" data-lang="ko">한</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="ja">日</button>
+                        <button class="lang-btn" data-lang="zh">中</button>
                     </div>
-                </div>
-            </div>
-            <!-- Main Header: Logo & Navigation -->
-            <div class="header-main">
-                <div class="header-main-inner">
-                    <div class="header-left">
-                        <a href="../" class="logo-link logo-main">Skinn.kr</a>
-                        <a href="./" class="logo-link logo-sub-link" onclick="goToLanding(event)">
-                            <span class="logo-divider">|</span>
-                            <span class="logo-sub">서울 피부과 가이드</span>
-                        </a>
-                        <span class="db-count" id="dbCount">0개 시술</span>
-                    </div>
-                    <nav class="view-tabs-enhanced" role="tablist">
-                        <div class="tabs-bg-slider" id="tabsSlider"></div>
-                        <button class="view-tab-new" data-view="consult" role="tab" aria-selected="false">
-                            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                                <circle cx="12" cy="10" r="1" fill="currentColor"/>
-                                <circle cx="8" cy="10" r="1" fill="currentColor"/>
-                                <circle cx="16" cy="10" r="1" fill="currentColor"/>
-                            </svg>
-                            <span class="tab-label">AI 상담</span>
-                        </button>
-                        <button class="view-tab-new" data-view="concern" role="tab" aria-selected="false">
-                            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"/>
-                                <path d="M21 21l-4.35-4.35"/>
-                            </svg>
-                            <span class="tab-label">고민별</span>
-                        </button>
-                        <button class="view-tab-new" data-view="filter" role="tab" aria-selected="false">
-                            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="3" width="7" height="7" rx="1"/>
-                                <rect x="14" y="3" width="7" height="7" rx="1"/>
-                                <rect x="3" y="14" width="7" height="7" rx="1"/>
-                                <rect x="14" y="14" width="7" height="7" rx="1"/>
-                            </svg>
-                            <span class="tab-label">카드뷰</span>
-                        </button>
-                        <button class="view-tab-new" data-view="table" role="tab" aria-selected="false">
-                            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M3 3h18v18H3z"/>
-                                <path d="M3 9h18"/>
-                                <path d="M3 15h18"/>
-                                <path d="M9 3v18"/>
-                                <path d="M15 3v18"/>
-                            </svg>
-                            <span class="tab-label">테이블</span>
-                        </button>
-                    </nav>
+                    <button class="auth-btn login-btn" id="loginBtn">로그인</button>
+                    <button class="auth-btn signup-btn" id="signupBtn">회원가입</button>
                 </div>
             </div>
         </header>
