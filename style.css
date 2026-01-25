@@ -399,6 +399,11 @@ body {
     border-color: var(--slate-300);
 }
 
+.lang-icon {
+    color: var(--slate-500);
+    flex-shrink: 0;
+}
+
 .lang-current {
     min-width: 16px;
     text-align: center;
