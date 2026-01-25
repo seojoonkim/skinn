@@ -12161,14 +12161,17 @@ button:focus-visible {
 
 .trust-badge-pro {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
-    padding: 10px 14px;
+    justify-content: center;
+    gap: 6px;
+    padding: 14px 16px;
     border-radius: 12px;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: default;
     position: relative;
     overflow: hidden;
+    text-align: center;
 }
 
 .trust-badge-pro::before {
@@ -12252,7 +12255,8 @@ button:focus-visible {
 .badge-content {
     display: flex;
     flex-direction: column;
-    gap: 1px;
+    align-items: center;
+    gap: 2px;
 }
 
 .badge-label {
@@ -12260,6 +12264,7 @@ button:focus-visible {
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.01em;
+    white-space: nowrap;
 }
 
 .badge-sub {
