@@ -1514,7 +1514,8 @@ body {
     background: white;
     border: 1px solid var(--slate-200);
     border-radius: var(--radius-lg);
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     max-height: 70vh;
 }
 
@@ -1522,6 +1523,7 @@ body {
     width: 100%;
     border-collapse: collapse;
     font-size: 13px;
+    table-layout: fixed;
 }
 
 /* 고정 헤더 */
@@ -1598,25 +1600,36 @@ body {
     display: none;
 }
 
-/* 컬럼 너비 최적화 */
-.data-table th:nth-child(1) { min-width: 180px; } /* 시술명 */
-.data-table th:nth-child(3) { min-width: 100px; } /* 카테고리 */
+/* 컬럼 너비 최적화 (브랜드 제외 7개 컬럼) */
+.data-table th:nth-child(1),
+.data-table td:nth-child(1) { width: 18%; } /* 시술명 */
+.data-table th:nth-child(3),
+.data-table td:nth-child(3) { width: 12%; } /* 카테고리 */
+.data-table th:nth-child(4),
+.data-table td:nth-child(4) { width: 28%; } /* 효과 - 넓게 */
 .data-table th:nth-child(5),
+.data-table td:nth-child(5) { width: 10%; text-align: right; } /* 지속 */
 .data-table th:nth-child(6),
+.data-table td:nth-child(6) { width: 8%; text-align: right; } /* 통증 */
 .data-table th:nth-child(7),
-.data-table th:nth-child(8) { text-align: right; } /* 숫자 컬럼 */
+.data-table td:nth-child(7) { width: 12%; text-align: right; } /* 다운타임 */
+.data-table th:nth-child(8),
+.data-table td:nth-child(8) { width: 12%; text-align: right; } /* 가격 */
 
-/* 숫자 우측 정렬 */
+/* 숫자 컬럼 스타일 */
 .data-table td:nth-child(5),
 .data-table td:nth-child(6),
 .data-table td:nth-child(7),
 .data-table td:nth-child(8) {
-    text-align: right;
     font-variant-numeric: tabular-nums;
+    white-space: nowrap;
 }
 
 .table-name {
     font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .table-effects {
@@ -1626,7 +1639,8 @@ body {
 }
 
 .table-effect-tag {
-    padding: 2px 8px;
+    padding: 2px 6px;
+    font-size: 11px;
     background: var(--bg-tertiary);
     border-radius: 4px;
     font-size: 12px;
