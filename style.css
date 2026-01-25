@@ -304,7 +304,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 950px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 0 32px;
     height: 56px;
@@ -487,7 +487,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 950px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 12px 32px;
     position: relative;
@@ -669,7 +669,7 @@ body {
 /* ===== Main Content ===== */
 .main-content {
     padding: 20px 32px;
-    max-width: 950px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -4183,7 +4183,7 @@ textarea.text-input.tall {
     align-items: center;
     justify-content: center;
     gap: 48px;
-    max-width: 950px;
+    max-width: 1000px;
     width: 100%;
     margin: 0 auto;
     padding: 48px 32px;
@@ -8125,7 +8125,7 @@ textarea.text-input.tall {
 
 /* ===== Report V2 - Navy & Gold Theme ===== */
 .report-container-v2 {
-    max-width: 950px;
+    max-width: 1000px;
     margin: 0 auto;
     background: white;
     border-radius: 16px;
