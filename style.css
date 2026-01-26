@@ -1286,8 +1286,6 @@ body {
     border-radius: var(--radius-xl);
     padding: 20px;
     height: fit-content;
-    position: sticky;
-    top: 75px;
     box-shadow: var(--shadow-card);
 }
 
