@@ -373,7 +373,7 @@ body {
 }
 
 .nav-tab.active {
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     background: var(--skinn-50);
 }
 
@@ -434,7 +434,7 @@ body {
     border-radius: 20px;
     font-size: 13px;
     font-weight: 500;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
 }
 
 .benefit-pill svg {
@@ -843,7 +843,7 @@ body {
 }
 
 .lang-option.active {
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     background: var(--skinn-50);
 }
 
@@ -1019,7 +1019,7 @@ body {
     border-radius: var(--radius-md);
     font-size: 14px;
     background: #f9fafb;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     transition: var(--transition);
     height: 38px;
     box-shadow: var(--shadow-sm);
@@ -1148,13 +1148,13 @@ body {
 .concern-card:hover .concern-icon {
     background: var(--teal-50);
     border-color: var(--teal-100);
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 .concern-count {
     padding: 3px 8px;
     background: var(--teal-50);
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     font-size: 11px;
     font-weight: 600;
     border-radius: var(--radius-sm);
@@ -2387,7 +2387,7 @@ body {
 }
 
 .modal-stat.highlight .modal-stat-value {
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 .modal-stat-label {
@@ -2759,7 +2759,7 @@ body {
 
 .external-link:hover {
     box-shadow: 0 4px 20px rgba(148, 163, 184, 0.18);
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     transform: translateY(-2px);
 }
 
@@ -3282,7 +3282,7 @@ body {
 }
 
 .modal-key-stats .modal-stat.highlight .modal-stat-value {
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     font-weight: 700;
 }
 
@@ -3441,7 +3441,7 @@ body {
 }
 
 .step-message strong {
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     font-weight: 600;
 }
 
@@ -3460,7 +3460,7 @@ body {
 .question-label {
     font-size: 13px;
     font-weight: 600;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 /* Option Grid */
@@ -3724,7 +3724,7 @@ textarea.text-input.tall {
 .ai-greeting .message {
     font-size: 15px;
     line-height: 1.7;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 .ai-section {
@@ -3954,7 +3954,7 @@ textarea.text-input.tall {
     border-radius: 8px;
     background: white;
     font-size: 13px;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     cursor: pointer;
     transition: all 0.2s;
     box-shadow: var(--shadow-sm);
@@ -4006,7 +4006,7 @@ textarea.text-input.tall {
 .report-summary-title {
     font-size: 12px;
     font-weight: 600;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     margin-bottom: 10px;
 }
 
@@ -4064,7 +4064,7 @@ textarea.text-input.tall {
 .report-greeting {
     font-size: 14px;
     line-height: 1.7;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 .report-greeting p {
@@ -4182,7 +4182,7 @@ textarea.text-input.tall {
 .treatment-price {
     font-size: 11px;
     font-weight: 600;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     text-align: right;
     margin-left: 8px;
 }
@@ -4223,7 +4223,7 @@ textarea.text-input.tall {
 .report-comment p {
     font-size: 13px;
     line-height: 1.6;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     margin-bottom: 8px;
 }
 
@@ -4247,7 +4247,7 @@ textarea.text-input.tall {
     position: relative;
     font-size: 12px;
     line-height: 1.4;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     background: #f9fafb;
     border-radius: 6px;
 }
@@ -4271,7 +4271,7 @@ textarea.text-input.tall {
 }
 
 .report-disclaimer strong {
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 /* Admin Link */
@@ -4378,7 +4378,7 @@ textarea.text-input.tall {
 
 .admin-btn.cancel {
     background: #f3f4f6;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 .admin-status {
@@ -4527,7 +4527,7 @@ textarea.text-input.tall {
     padding: 6px 0;
     padding-left: 16px;
     position: relative;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     border-bottom: 1px solid #f3f4f6;
 }
 
@@ -4613,7 +4613,7 @@ textarea.text-input.tall {
     background: white;
     border: none;
     border-radius: 8px;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     box-shadow: var(--shadow-xs);
 }
 
@@ -5026,7 +5026,7 @@ textarea.text-input.tall {
 }
 
 .floating-card .card-desc strong {
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     font-weight: 600;
 }
 
@@ -5091,7 +5091,7 @@ textarea.text-input.tall {
     right: 20px;
     padding: 6px 14px;
     background: #ffffff;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     font-size: 12px;
     font-weight: 700;
     border-radius: 6px;
@@ -5198,7 +5198,7 @@ textarea.text-input.tall {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 .landing-card-row .card-icon svg {
@@ -5238,7 +5238,7 @@ textarea.text-input.tall {
 }
 
 .landing-card-row .landing-card:hover .card-arrow {
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     transform: translateX(3px);
 }
 
@@ -5266,7 +5266,7 @@ textarea.text-input.tall {
 }
 
 .landing-trust-text .trust-closing strong {
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 /* Footer Bar */
@@ -5395,7 +5395,7 @@ textarea.text-input.tall {
         padding: 6px 12px;
         font-size: 10px;
         background: linear-gradient(135deg, var(--skinn-50) 0%, #e0f4fc 100%);
-        color: var(--skinn-600);
+        color: var(--skinn-500);
         border: 1px solid rgba(0, 153, 214, 0.15);
         font-weight: 600;
         letter-spacing: 0.05em;
@@ -5829,7 +5829,7 @@ textarea.text-input.tall {
 .analysis-box p {
     font-size: 14px;
     line-height: 1.7;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     margin-bottom: 12px;
 }
 
@@ -5877,7 +5877,7 @@ textarea.text-input.tall {
 .timeline-box p {
     font-size: 14px;
     line-height: 1.6;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     margin-bottom: 16px;
 }
 
@@ -5896,7 +5896,7 @@ textarea.text-input.tall {
     border: 1px solid #e5e7eb;
     border-radius: 8px;
     font-size: 13px;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 .milestone-dot {
@@ -5974,7 +5974,7 @@ textarea.text-input.tall {
 .guide-title {
     font-size: 11px;
     font-weight: 600;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     margin-bottom: 6px;
 }
 
@@ -6038,7 +6038,7 @@ textarea.text-input.tall {
 .recommendation-box p {
     font-size: 14px;
     line-height: 1.7;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 .budget-tip {
@@ -6468,7 +6468,7 @@ textarea.text-input.tall {
 .back-btn-error {
     padding: 12px 24px;
     background: white;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     border: none;
     border-radius: 8px;
     font-size: 14px;
@@ -6486,7 +6486,7 @@ textarea.text-input.tall {
 .detail-price {
     font-size: 18px;
     font-weight: 700;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
     padding: 8px 16px;
     border-radius: 8px;
@@ -6687,7 +6687,7 @@ textarea.text-input.tall {
 }
 
 .progress-step.active .step-text {
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     font-weight: 700;
 }
 
@@ -6936,7 +6936,7 @@ textarea.text-input.tall {
 
 .btn-retry {
     background: white;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     border: none;
     box-shadow: var(--shadow-sm);
 }
@@ -7348,7 +7348,7 @@ textarea.text-input.tall {
 
 .detail-tag.brand {
     background: #f3f4f6;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 .detail-price-badge {
@@ -7387,7 +7387,7 @@ textarea.text-input.tall {
 .stat-value {
     font-size: 14px;
     font-weight: 600;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 /* Description Box */
@@ -7398,7 +7398,7 @@ textarea.text-input.tall {
 .detail-desc-box p {
     font-size: 14px;
     line-height: 1.8;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     margin: 0;
 }
 
@@ -7423,7 +7423,7 @@ textarea.text-input.tall {
 .detail-mechanism-box p {
     font-size: 13px;
     line-height: 1.7;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     margin: 0;
 }
 
@@ -7452,7 +7452,7 @@ textarea.text-input.tall {
     font-size: 13px;
     padding: 6px 14px;
     background: #f3f4f6;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     border-radius: 20px;
 }
 
@@ -7484,7 +7484,7 @@ textarea.text-input.tall {
     display: block;
     font-size: 13px;
     font-weight: 600;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     margin-bottom: 12px;
 }
 
@@ -7558,7 +7558,7 @@ textarea.text-input.tall {
     font-size: 14px;
     font-weight: 500;
     line-height: 1.7;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     margin: 0;
 }
 
@@ -7870,7 +7870,7 @@ textarea.text-input.tall {
 
 .cti-price {
     font-weight: 600;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 .cti-sessions,
@@ -7902,7 +7902,7 @@ textarea.text-input.tall {
 .source-title {
     font-size: 14px;
     font-weight: 600;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     margin: 0 0 12px 0;
     display: flex;
     align-items: center;
@@ -7949,20 +7949,20 @@ textarea.text-input.tall {
     border-radius: 8px;
     font-size: 12px;
     font-weight: 500;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     cursor: pointer;
     transition: all 0.2s;
     user-select: none;
 }
 
 .concern-chip:hover {
-    border-color: var(--skinn-700);
+    border-color: var(--skinn-500);
     background: #f8fafc;
 }
 
 .concern-chip.selected {
     background: var(--skinn-600);
-    border-color: var(--skinn-700);
+    border-color: var(--skinn-500);
     color: white;
 }
 
@@ -8068,7 +8068,7 @@ textarea.text-input.tall {
 }
 
 .priority-dropzone.drag-over {
-    border-color: var(--skinn-700);
+    border-color: var(--skinn-500);
     background: rgba(30, 58, 95, 0.1);
 }
 
@@ -8205,7 +8205,7 @@ textarea.text-input.tall {
 .analysis-card h4 {
     font-size: 14px;
     font-weight: 600;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     margin: 0 0 16px 0;
 }
 
@@ -8511,7 +8511,7 @@ textarea.text-input.tall {
     flex: 1;
     font-size: 13px;
     font-weight: 500;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 .tx-price {
@@ -8756,7 +8756,7 @@ textarea.text-input.tall {
 }
 
 .summary-row strong {
-    color: var(--skinn-700);
+    color: var(--skinn-500);
 }
 
 /* Highlight card */
@@ -8858,7 +8858,7 @@ textarea.text-input.tall {
 .comment-content p {
     font-size: 14px;
     line-height: 1.7;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     margin: 0 0 8px 0;
 }
 
@@ -8883,7 +8883,7 @@ textarea.text-input.tall {
 .section-header h3 {
     font-size: 20px;
     font-weight: 700;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     margin: 0;
 }
 
@@ -9038,7 +9038,7 @@ textarea.text-input.tall {
 }
 
 .tx-name-v2 {
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     font-weight: 500;
     flex: 1;
     min-width: 0;
@@ -9058,7 +9058,7 @@ textarea.text-input.tall {
 }
 
 .combo-list-v2 li.tx-item-clickable .tx-name-v2 {
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     font-weight: 600;
 }
 
@@ -9154,7 +9154,7 @@ textarea.text-input.tall {
 .detail-left h4 {
     font-size: 16px;
     font-weight: 600;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     margin: 0 0 4px 0;
 }
 
@@ -9166,7 +9166,7 @@ textarea.text-input.tall {
 .detail-price-v2 {
     font-size: 15px;
     font-weight: 700;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
 }
 
 .detail-stats-v2 {
@@ -9182,13 +9182,13 @@ textarea.text-input.tall {
 }
 
 .detail-stats-v2 b {
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 .detail-desc-v2 {
     font-size: 14px;
     line-height: 1.7;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     margin: 0 0 16px 0;
 }
 
@@ -9223,7 +9223,7 @@ textarea.text-input.tall {
 .detail-box p {
     font-size: 13px;
     line-height: 1.6;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     margin: 0;
 }
 
@@ -9235,7 +9235,7 @@ textarea.text-input.tall {
 
 .detail-box ul li {
     font-size: 13px;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     padding: 4px 0;
     padding-left: 16px;
     position: relative;
@@ -9259,7 +9259,7 @@ textarea.text-input.tall {
     font-size: 12px;
     padding: 4px 12px;
     background: #e5e7eb;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     border-radius: 20px;
 }
 
@@ -9319,7 +9319,7 @@ textarea.text-input.tall {
     font-size: 14px;
     font-weight: 500;
     line-height: 1.6;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     padding: 16px;
     background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
     border-radius: 8px;
@@ -9365,7 +9365,7 @@ textarea.text-input.tall {
 .tip-item p {
     font-size: 13px;
     line-height: 1.5;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     margin: 0;
 }
 
@@ -9398,7 +9398,7 @@ textarea.text-input.tall {
 .prec-col strong {
     display: block;
     font-size: 13px;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     margin-bottom: 12px;
 }
 
@@ -9442,7 +9442,7 @@ textarea.text-input.tall {
 .btn-secondary {
     background: white;
     border: 1px solid #e5e7eb;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 .btn-secondary:hover {
@@ -10071,7 +10071,7 @@ textarea.text-input.tall {
 }
 
 .option-btn.selected .recommend-badge {
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     background: rgba(255,255,255,0.9);
     border-color: rgba(255,255,255,0.5);
 }
@@ -10172,7 +10172,7 @@ textarea.text-input.tall {
 .dc-name {
     font-size: 18px;
     font-weight: 700;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     margin: 0;
 }
 
@@ -10184,7 +10184,7 @@ textarea.text-input.tall {
 .dc-price {
     font-size: 16px;
     font-weight: 700;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     white-space: nowrap;
 }
 
@@ -10200,7 +10200,7 @@ textarea.text-input.tall {
 }
 
 .dc-quick-stats b {
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     font-weight: 600;
 }
 
@@ -10253,7 +10253,7 @@ textarea.text-input.tall {
 .insight-value {
     font-size: 14px;
     font-weight: 700;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
 }
 
 .insight-value.aggressive { color: #dc2626; }
@@ -10455,7 +10455,7 @@ textarea.text-input.tall {
     display: block;
     font-size: 14px;
     font-weight: 700;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     margin-bottom: 4px;
 }
 
@@ -10472,7 +10472,7 @@ textarea.text-input.tall {
     margin: 0;
     font-size: 14px;
     line-height: 1.7;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     border-bottom: 1px solid #f3f4f6;
 }
 
@@ -10690,7 +10690,7 @@ textarea.text-input.tall {
 .analysis-card-header h4 {
     font-size: 14px;
     font-weight: 600;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     margin: 0;
     flex: 1;
     letter-spacing: -0.2px;
@@ -10792,7 +10792,7 @@ textarea.text-input.tall {
 .boost-name {
     font-size: 13px;
     font-weight: 600;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 .boost-treatments {
@@ -10842,7 +10842,7 @@ textarea.text-input.tall {
 .concern-name {
     font-size: 12px;
     font-weight: 600;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     display: inline-block;
     margin-bottom: 4px;
 }
@@ -10901,7 +10901,7 @@ textarea.text-input.tall {
 .condition-label {
     font-size: 13px;
     font-weight: 600;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     white-space: nowrap;
 }
 
@@ -10975,7 +10975,7 @@ textarea.text-input.tall {
 .synergy-pair {
     font-size: 14px;
     font-weight: 700;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
 }
 
 .synergy-boost {
@@ -11051,7 +11051,7 @@ textarea.text-input.tall {
 .area-name-v2 {
     font-size: 14px;
     font-weight: 700;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
 }
 
 .area-types {
@@ -11094,7 +11094,7 @@ textarea.text-input.tall {
 .area-name {
     font-size: 12px;
     font-weight: 600;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     display: block;
 }
 
@@ -11153,7 +11153,7 @@ textarea.text-input.tall {
 .concern-box-title {
     font-size: 15px;
     font-weight: 700;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     letter-spacing: -0.3px;
 }
 
@@ -11242,7 +11242,7 @@ textarea.text-input.tall {
 .analysis-card-header h4 {
     font-size: 14px;
     font-weight: 600;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     margin: 0;
     flex: 1;
     letter-spacing: -0.2px;
@@ -11294,7 +11294,7 @@ textarea.text-input.tall {
 .synergy-pair {
     font-size: 14px;
     font-weight: 600;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
 }
 
 .synergy-boost {
@@ -11313,7 +11313,7 @@ textarea.text-input.tall {
 .area-name {
     font-size: 12px;
     font-weight: 600;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
 }
 
 .area-reason {
@@ -11340,7 +11340,7 @@ textarea.text-input.tall {
 }
 
 .treatment-mini-card:hover {
-    border-color: var(--skinn-700);
+    border-color: var(--skinn-500);
     box-shadow: 0 4px 12px rgba(30, 58, 95, 0.1);
     transform: translateY(-2px);
 }
@@ -11355,7 +11355,7 @@ textarea.text-input.tall {
 .tmc-name {
     font-size: 15px;
     font-weight: 600;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     margin: 0;
 }
 
@@ -11418,7 +11418,7 @@ textarea.text-input.tall {
 .tmc-stat-value {
     font-size: 13px;
     font-weight: 600;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 /* ===== Expert Guide Section ===== */
@@ -11459,7 +11459,7 @@ textarea.text-input.tall {
 .guide-card h4 {
     font-size: 15px;
     font-weight: 700;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     margin: 0;
 }
 
@@ -11532,7 +11532,7 @@ textarea.text-input.tall {
 .precaution-header h4 {
     font-size: 16px;
     font-weight: 700;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     margin: 0;
 }
 
@@ -11573,7 +11573,7 @@ textarea.text-input.tall {
 .timeline-content p {
     margin: 0;
     font-size: 13px;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     line-height: 1.5;
 }
 
@@ -11617,7 +11617,7 @@ textarea.text-input.tall {
 .aftercare-tips h4 {
     font-size: 15px;
     font-weight: 700;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     margin: 0 0 18px 0;
 }
 
@@ -11654,7 +11654,7 @@ textarea.text-input.tall {
 .tip-card-title {
     font-size: 13px;
     font-weight: 700;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     margin: 0;
 }
 
@@ -11666,7 +11666,7 @@ textarea.text-input.tall {
 }
 
 .tip-card p strong {
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     display: block;
     margin-bottom: 4px;
 }
@@ -11801,7 +11801,7 @@ textarea.text-input.tall {
 }
 
 .meta-value {
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     font-weight: 500;
 }
 
@@ -11870,7 +11870,7 @@ textarea.text-input.tall {
 .final-advice-header h4 {
     font-size: 14px;
     font-weight: 600;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     margin: 0;
     letter-spacing: -0.2px;
 }
@@ -12034,7 +12034,7 @@ textarea.text-input.tall {
     margin: 0;
     font-size: 14px;
     font-weight: 600;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 .skin-card-body {
@@ -12086,7 +12086,7 @@ textarea.text-input.tall {
     margin: 0 0 16px 0;
     font-size: 15px;
     font-weight: 600;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
 }
 
 .care-advice-grid {
@@ -12114,7 +12114,7 @@ textarea.text-input.tall {
 .care-content strong {
     display: block;
     font-size: 13px;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     margin-bottom: 8px;
 }
 
@@ -12224,7 +12224,7 @@ textarea.text-input.tall {
     display: block;
     font-size: 12px;
     font-weight: 600;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     margin-bottom: 3px;
 }
 
@@ -12293,7 +12293,7 @@ textarea.text-input.tall {
 .score-cat-name {
     font-size: 12px;
     font-weight: 600;
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     flex: 1;
 }
 
@@ -12360,7 +12360,7 @@ textarea.text-input.tall {
 .homecare-card h4 {
     font-size: 14px;
     font-weight: 600;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     margin: 0;
 }
 
@@ -12440,7 +12440,7 @@ textarea.text-input.tall {
 .routine-label {
     font-size: 12px;
     font-weight: 700;
-    color: var(--skinn-700);
+    color: var(--skinn-500);
     display: block;
     margin-bottom: 8px;
 }
@@ -12706,7 +12706,7 @@ button:focus-visible {
     display: inline-block;
     padding: 3px 10px;
     background: var(--emerald-100);
-    color: var(--skinn-600);
+    color: var(--skinn-500);
     font-size: 10px;
     font-weight: 600;
     border-radius: var(--radius-full);
@@ -12978,7 +12978,7 @@ button:focus-visible {
 }
 
 .landing-stats-bar .stat-item:hover .stat-num {
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 /* ===== Landing Badge Animation ===== */
@@ -13160,7 +13160,7 @@ button:focus-visible {
 /* Card hover arrow animation */
 .landing-card-row .landing-card:hover .card-arrow {
     transform: translateX(4px);
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 /* ===== Stats Counter Animation ===== */
@@ -13179,7 +13179,7 @@ button:focus-visible {
 
 .feature-item:hover .feature-icon {
     transform: scale(1.1);
-    color: var(--skinn-600);
+    color: var(--skinn-500);
 }
 
 .feature-icon {
