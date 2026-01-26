@@ -5566,7 +5566,7 @@ textarea.text-input.tall {
         justify-content: center;
         background: #ffffff;
         border: none;
-        box-shadow: 0 2px 8px rgba(100, 116, 139, 0.08);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     }
 
     .badge-icon-wrap {
@@ -12564,9 +12564,9 @@ button:focus-visible {
 .trust-badge-pro.verified,
 .trust-badge-pro.secure,
 .trust-badge-pro.data {
-    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    background: #ffffff;
     border: none;
-    box-shadow: 0 2px 8px rgba(100, 116, 139, 0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     color: var(--slate-600);
 }
 
@@ -12579,7 +12579,7 @@ button:focus-visible {
 .trust-badge-pro.verified:hover,
 .trust-badge-pro.secure:hover,
 .trust-badge-pro.data:hover {
-    box-shadow: 0 6px 16px rgba(100, 116, 139, 0.15);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     color: var(--slate-700);
 }
 
