@@ -9,8 +9,8 @@ let selectedTableCategories = [];
 
 // ===== Concern Map (MECE) =====
 const concernMap = {
-    '처진피부': ['리프팅', '타이트닝', 'HIFU', '실리프팅', '울쎄라', '슈링크', '올리지오'],
-    '주름': ['주름', '보톡스', '리프팅', '타이트닝'],
+    '처진피부': ['리프팅', '타이트닝', 'HIFU', '실리프팅', '울쎄라', '슈링크', '올리지오', '써마지', '인모드'],
+    '주름': ['주름', '보톡스', '리프팅', '타이트닝', '써마지', '울쎄라', '슈링크'],
     '탄력저하': ['탄력', 'RF', '콜라겐', '스킨부스터', '리쥬란', '쥬베룩', '엑소좀'],
     '모공': ['모공', 'MRF', '피지', '모공축소', '포텐자', '시크릿'],
     '기미/잡티': ['기미', '색소', '미백', '토닝', '피코', '잡티', 'IPL', '브라이트닝'],
@@ -116,7 +116,7 @@ function setupLangDropdown() {
 // ===== Hash-based Routing =====
 function handleHashChange() {
     const hash = window.location.hash.slice(1); // Remove '#'
-    const validViews = ['consult', 'concern', 'filter', 'table'];
+    const validViews = ['consult', 'concern', 'filter', 'table', 'contact'];
 
     if (hash && validViews.includes(hash)) {
         switchToView(hash, false);
@@ -856,16 +856,13 @@ function showModal(t) {
     `;
 
     content.innerHTML = `
-        <!-- 2. 한줄 요약 -->
+        <!-- 2. 한줄 요약 + 총평 통합 -->
         ${t.review ? `
         <div class="modal-section">
-            <div class="review-summary">${t.review.summary}</div>
-        </div>
-        
-        <!-- 3. 총평 -->
-        <div class="modal-section">
-            <div class="review-overall">
-                <strong>💬 총평:</strong> ${t.review.overall}
+            <div class="review-highlight">
+                <span class="review-highlight-badge">요약</span>
+                <p class="review-highlight-summary">${t.review.summary}</p>
+                <p class="review-highlight-overall">"${t.review.overall}"</p>
             </div>
         </div>
         ` : ''}
@@ -890,19 +887,19 @@ function showModal(t) {
             <h3 class="modal-section-title">핵심 정보</h3>
             <div class="modal-stats-grid modal-key-stats">
                 <div class="modal-stat highlight">
-                    <div class="modal-stat-label">💰 가격</div>
+                    <div class="modal-stat-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>가격</div>
                     <div class="modal-stat-value">${t.pricing.range}</div>
                 </div>
                 <div class="modal-stat highlight">
-                    <div class="modal-stat-label">⏱️ 효과 지속</div>
+                    <div class="modal-stat-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>효과 지속</div>
                     <div class="modal-stat-value">${t.effects.duration}</div>
                 </div>
                 <div class="modal-stat highlight">
-                    <div class="modal-stat-label">🩹 다운타임</div>
+                    <div class="modal-stat-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>다운타임</div>
                     <div class="modal-stat-value">${t.recovery.downtime || '없음'}</div>
                 </div>
                 <div class="modal-stat highlight">
-                    <div class="modal-stat-label">😣 통증</div>
+                    <div class="modal-stat-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>통증</div>
                     <div class="modal-stat-value">${t.recovery.painLevel}/5</div>
                 </div>
             </div>
@@ -914,15 +911,15 @@ function showModal(t) {
             <h3 class="modal-section-title">팁 및 후기 분석</h3>
             <div class="review-grid-3col">
                 <div class="review-tips-box">
-                    <h4>💡 시술 팁</h4>
+                    <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>시술 팁</h4>
                     <ul>${t.review.tips.map(tip => `<li>${tip}</li>`).join('')}</ul>
                 </div>
                 <div class="review-likes">
-                    <h4>👍 이런 점이 좋아요</h4>
+                    <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/></svg>이런 점이 좋아요</h4>
                     <ul>${t.review.likes.map(l => `<li>${l}</li>`).join('')}</ul>
                 </div>
                 <div class="review-dislikes">
-                    <h4>👎 이런 점은 아쉬워요</h4>
+                    <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 003 3l4-9V2H5.72a2 2 0 00-2 1.7l-1.38 9a2 2 0 002 2.3zm7-13h2.67A2.31 2.31 0 0122 4v7a2.31 2.31 0 01-2.33 2H17"/></svg>이런 점은 아쉬워요</h4>
                     <ul>${t.review.dislikes.map(d => `<li>${d}</li>`).join('')}</ul>
                 </div>
             </div>
@@ -934,16 +931,16 @@ function showModal(t) {
             <h3 class="modal-section-title">이런 분께 추천해요</h3>
             <div class="modal-suitability">
                 <div class="suitability-age-box">
-                    <h4>👤 적정 연령대</h4>
+                    <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="12" x2="15" y2="15"/></svg>적정 연령대</h4>
                     <p>${t.suitability.idealAge}</p>
                 </div>
                 <div class="suitability-recommend">
-                    <h4>○ 추천</h4>
+                    <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>추천</h4>
                     <ul>${t.suitability.bestFor.map(b => `<li>${b}</li>`).join('')}</ul>
                 </div>
                 ${t.suitability.notRecommended.length ? `
                 <div class="suitability-caution">
-                    <h4>△ 비추천</h4>
+                    <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>비추천</h4>
                     <ul>${t.suitability.notRecommended.map(n => `<li>${n}</li>`).join('')}</ul>
                 </div>
                 ` : ''}
@@ -956,13 +953,13 @@ function showModal(t) {
             <h3 class="modal-section-title">한눈에 보는 장단점</h3>
             <div class="modal-pros-cons">
                 <div class="modal-pros">
-                    <h4>👍 장점</h4>
+                    <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>장점</h4>
                     <ul class="modal-list">
                         ${t.pros.map(p => `<li>${p}</li>`).join('')}
                     </ul>
                 </div>
                 <div class="modal-cons">
-                    <h4>👎 단점</h4>
+                    <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>단점</h4>
                     <ul class="modal-list">
                         ${t.cons.map(c => `<li>${c}</li>`).join('')}
                     </ul>
@@ -1008,7 +1005,7 @@ function showModal(t) {
             <h3 class="modal-section-title">비교 & 함께 하면 좋은 시술</h3>
             <div class="modal-comparison">
                 ${Object.entries(t.comparison.vs).map(([k, v]) => `<p><strong>vs ${k}:</strong> ${v}</p>`).join('')}
-                ${t.comparison.bestWith.length ? `<p class="best-with">🤝 <strong>추천 조합:</strong> ${t.comparison.bestWith.join(', ')}</p>` : ''}
+                ${t.comparison.bestWith.length ? `<p class="best-with"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="best-with-icon"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg><strong>추천 조합:</strong> ${t.comparison.bestWith.join(', ')}</p>` : ''}
             </div>
         </div>
         ` : ''}
@@ -1167,8 +1164,8 @@ let consultState = {
         concerns: [],
         areas: [],
         budget: null,
-        downtime: null,
-        pain: null,
+        downtime: '상관없음',  // 기본값: 상관없어요 (추천)
+        pain: '괜찮음',  // 기본값: 잘 참아요 (추천)
         // 새로운 필드들
         treatmentType: ['상관없음'],  // 기본값: 상관없음 (추천)
         duration: '중기',  // 기본값: 6~12개월 (추천)
@@ -1980,12 +1977,12 @@ function generateRuleBasedRecommendation(userData) {
     // ===== 5. 효과 발현 시점 =====
     const effectTiming = {
         immediate: {
-            treatments: ['보톡스', '필러', '아쿠아필', '물광주사', '윤곽주사'],
-            reason: '즉시~2주 내 효과가 나타나는 시술입니다.'
+            treatments: ['필러', '아쿠아필', '물광주사', '윤곽주사'],
+            reason: '시술 직후~수일 내 효과가 나타나는 시술입니다.'
         },
         gradual: {
-            treatments: ['리쥬란', '스킨부스터', '콜라겐부스터', '레이저토닝', 'IPL'],
-            reason: '1~3개월에 걸쳐 점진적으로 효과가 나타납니다.'
+            treatments: ['보톡스', '리쥬란', '스킨부스터', '콜라겐부스터', '레이저토닝', 'IPL'],
+            reason: '1~2주(보톡스) 또는 1~3개월에 걸쳐 점진적으로 효과가 나타납니다.'
         },
         delayed: {
             treatments: ['울쎄라', '써마지', '스컬트라', '실리프팅', '프락셀'],
@@ -2106,12 +2103,12 @@ function generateRuleBasedRecommendation(userData) {
     // 고민 → 시술 매핑 (대폭 확장)
     const concernToTreatments = {
         '처진피부': ['울쎄라', '써마지', '실리프팅', '인모드', '슈링크', '올리지오', '텐써마', '유써마', '더블로', '리프테라', '소프웨이브', '하이푸', 'HIFU', '울트라포머', '울트라셀', '실루엣소프트', '민트실', '녹는실', '보톡스', '스킨보톡스'],
-        '주름': ['보톡스', '필러', '써마지', '울쎄라', '리쥬란', '스킨보톡스', '주름보톡스', '이마보톡스', '눈가보톡스', '미간보톡스', '팔자필러', '입술필러', '콜라겐부스터', '쥬베룩', '리즈네', '엑소좀'],
+        '주름': ['보톡스', '써마지', '울쎄라', '리쥬란', '스킨보톡스', '주름보톡스', '이마보톡스', '눈가보톡스', '미간보톡스', '콜라겐부스터', '쥬베룩', '리즈네', '엑소좀', '슈링크', '인모드'],
         '탄력저하': ['써마지', '울쎄라', '인모드', '스킨보톡스', '콜라겐부스터', '리쥬란', '쥬베룩', '볼뉴머', '프로파일로', '엑소좀', '슈링크', '소프웨이브', '올리지오', '폴리뉴클레오타이드'],
         '볼륨손실': ['필러', '스컬트라', '엘란쎄', '지방이식', '콜라겐부스터', '볼필러', '애교살필러', '이마필러', '관자필러', '쥬베룩', '볼뉴머'],
         '이중턱': ['지방분해주사', '슈링크', '울쎄라', '실리프팅', '윤곽주사', '턱보톡스', '지방흡입', '인모드', '벨라소닉', '더블로'],
         '팔자주름': ['필러', '실리프팅', '울쎄라', '보톡스', '팔자필러', '콜라겐부스터', '하이푸', '써마지'],
-        '모공': ['프락셀', '피코슈어', 'CO2레이저', '아쿠아필', '모피어스8', '실펌', '레이저토닝', 'MTS', '마이크로니들', '제네시스', 'IPL', '스킨보톡스', '써마지', '피코토닝'],
+        '모공': ['아쿠아필', '모피어스8', '실펌', '실펌X', '포텐자', '시크릿', 'MTS', '마이크로니들', '제네시스', '스킨보톡스', '써마지', '인모드', '올리지오'],
         '기미잡티': ['피코슈어', '레이저토닝', 'IPL', '스타워커', '루비레이저', '큐스위치', '멜라논', '트리플토닝', '클라리티', '엑셀브이', '피코웨이', '피코플러스', '스펙트라', '제네시스'],
         '피부결': ['아쿠아필', '리쥬란', '엑소좀', '벨벳필', '스킨부스터', '물광주사', 'MTS', '더마펜', '실펌', '제네시스', '레이저토닝', '콜라겐부스터', '연어주사', '쥬베룩'],
         '피부톤': ['IPL', '레이저토닝', '비타민주사', '글루타치온', '백옥주사', '신데렐라주사', '제네시스', '클라리티', '엑셀브이', '스펙트라'],
@@ -2720,12 +2717,12 @@ function generateRuleBasedRecommendation(userData) {
             // 3. 카테고리/서브카테고리/시술명 매칭 (확장)
             const categoryMap = {
                 '처진피부': ['리프팅', 'HIFU', '고주파', '울쎄라', '써마지', '실리프팅', '슈링크', '인모드', '타이트닝', '올리지오', '더블로', '텐써마', '유써마', '소프웨이브', '하이푸'],
-                '주름': ['보톡스', '필러', '리프팅', '주름', '울쎄라', '써마지', '리쥬란', '스킨보톡스', '콜라겐', '쥬베룩'],
+                '주름': ['보톡스', '리프팅', '주름', '울쎄라', '써마지', '리쥬란', '스킨보톡스', '콜라겐', '쥬베룩', '슈링크', '인모드'],
                 '탄력저하': ['리프팅', '고주파', '스킨부스터', '콜라겐', '탄력', '써마지', '울쎄라', '타이트닝', '리쥬란', '볼뉴머', '프로파일로', '스킨보톡스', '인모드', '슈링크', '보톡스'],
                 '볼륨손실': ['필러', '지방', '볼륨', '스컬트라', '엘란쎄', '쥬베룩', '볼뉴머', '콜라겐'],
                 '이중턱': ['지방', '윤곽', '턱', '슈링크', '인모드', '벨라소닉', '더블로'],
                 '팔자주름': ['필러', '리프팅', '팔자', '실리프팅', '울쎄라', '보톡스'],
-                '모공': ['레이저', '필링', '프락셔널', '토닝', '모공', '피코', '프락셀', '아쿠아필', '실펌', '모피어스', '제네시스', 'MTS'],
+                '모공': ['필링', '모공', '아쿠아필', '실펌', '모피어스', '제네시스', 'MTS', '포텐자', '시크릿', '써마지', '인모드', '스킨보톡스'],
                 '기미잡티': ['레이저', '토닝', 'IPL', '피코', '기미', '색소', '멜라닌', '스펙트라', '클라리티', '엑셀브이'],
                 '피부결': ['필링', '스킨부스터', '리쥬란', 'MTS', '레이저', '아쿠아필', '피부결', '물광', '벨벳', '제네시스', '엑소좀', '살리실산', '글리콜산'],
                 '피부톤': ['토닝', 'IPL', '레이저', '백옥', '신데렐라', '글루타치온', '비타민', '제네시스', '클라리티'],
@@ -2806,6 +2803,41 @@ function generateRuleBasedRecommendation(userData) {
             '홍조혈관': ['브이빔', '엑셀브이', '옐로우레이저', '혈관레이저'],
             '관리': ['이온토', '초음파관리', 'LED테라피', 'LDM', '산소테라피', 'MTS']
         };
+
+        // 가격대별 시술 티어 (A/B/C 플랜 차별화용)
+        // premium: A플랜용, value: B플랜용, budget: C플랜용
+        const priceTiers = {
+            'HIFU리프팅': { premium: ['울쎄라'], value: ['더블로', '리프테라'], budget: ['슈링크', '소노퀸', '울트라포머'] },
+            'RF리프팅': { premium: ['써마지'], value: ['인모드', '올리지오'], budget: ['스카이리프트', '포텐자'] },
+            '실리프팅': { premium: ['실루엣소프트'], value: ['실리프팅', '민트실'], budget: ['녹는실', 'PDO실'] },
+            '스킨부스터': { premium: ['엑소좀', '쥬베룩'], value: ['리쥬란', '볼뉴머'], budget: ['물광주사', '연어주사'] },
+            '흉터모공레이저': { premium: ['모피어스8', '시크릿'], value: ['실펌X', '포텐자'], budget: ['실펌', 'MTS'] },
+            '색소레이저': { premium: ['피코슈어', '피코웨이'], value: ['스펙트라', '클라리티'], budget: ['레이저토닝', 'IPL'] },
+            '토닝': { premium: ['엑셀브이', '클라리티'], value: ['제네시스'], budget: ['IPL', '레이저토닝'] }
+        };
+
+        // 전략에 따른 티어 우선순위 가져오기
+        function getPreferredTier(strategy) {
+            if (strategy === 'premium') return ['premium', 'value', 'budget'];
+            if (strategy === 'value') return ['value', 'budget', 'premium'];
+            return ['budget', 'value', 'premium'];
+        }
+
+        // 시술이 현재 전략의 티어에 맞는지 확인
+        function matchesTierStrategy(treatmentName, strategy) {
+            const preferredTiers = getPreferredTier(strategy);
+            const group = getTreatmentGroup(treatmentName);
+            if (!group || !priceTiers[group]) return true; // 티어 없으면 통과
+
+            const tierInfo = priceTiers[group];
+            const primaryTier = preferredTiers[0];
+            const secondaryTier = preferredTiers[1];
+
+            // 우선 티어에 있으면 +점수, 안맞는 티어면 -점수
+            if (tierInfo[primaryTier]?.some(t => treatmentName.includes(t))) return 2;
+            if (tierInfo[secondaryTier]?.some(t => treatmentName.includes(t))) return 1;
+            return 0;
+        }
         
         // 시술이 속한 그룹 찾기
         function getTreatmentGroup(treatmentName) {
@@ -2843,25 +2875,40 @@ function generateRuleBasedRecommendation(userData) {
         const relevantTreatments = scoredTreatments
             .filter(t => t.score >= 20 && !excludeTreatments.has(t.name) && t.matchedConcerns?.length > 0);
         
-        // 전략에 따른 시술 정렬
+        // 전략에 따른 시술 정렬 (티어 매칭 포함)
         let pool = [...relevantTreatments];
-        
+
         if (strategy === 'premium') {
-            // 프리미엄: 점수 40 이상 + 매칭된 고민 있는 것 중 가격 높은 순
+            // 프리미엄: 점수 40 이상 + 매칭된 고민 있는 것 중 티어 우선, 그 다음 가격 높은 순
             pool = pool.filter(t => t.score >= 40 && t.matchedConcerns?.length > 0);
             pool.sort((a, b) => {
-                // 먼저 핵심 고민 매칭 수로 정렬, 같으면 가격으로
+                // 1. 티어 매칭 우선
+                const aTier = matchesTierStrategy(a.name, strategy);
+                const bTier = matchesTierStrategy(b.name, strategy);
+                if (bTier !== aTier) return bTier - aTier;
+                // 2. 핵심 고민 매칭 수
                 const aPrimaryMatch = a.matchedConcerns.filter(c => primaryConcerns.includes(c)).length;
                 const bPrimaryMatch = b.matchedConcerns.filter(c => primaryConcerns.includes(c)).length;
                 if (bPrimaryMatch !== aPrimaryMatch) return bPrimaryMatch - aPrimaryMatch;
+                // 3. 가격
                 return b.minPrice - a.minPrice;
             });
         } else if (strategy === 'value') {
-            // 가성비: 점수/가격 비율
-            pool.sort((a, b) => (b.score / Math.max(b.minPrice, 1)) - (a.score / Math.max(a.minPrice, 1)));
+            // 가성비: 티어 매칭 후 점수/가격 비율
+            pool.sort((a, b) => {
+                const aTier = matchesTierStrategy(a.name, strategy);
+                const bTier = matchesTierStrategy(b.name, strategy);
+                if (bTier !== aTier) return bTier - aTier;
+                return (b.score / Math.max(b.minPrice, 1)) - (a.score / Math.max(a.minPrice, 1));
+            });
         } else {
-            // 기본: 점수순
-            pool.sort((a, b) => b.score - a.score);
+            // 버짓: 티어 매칭 후 점수순
+            pool.sort((a, b) => {
+                const aTier = matchesTierStrategy(a.name, strategy);
+                const bTier = matchesTierStrategy(b.name, strategy);
+                if (bTier !== aTier) return bTier - aTier;
+                return b.score - a.score;
+            });
         }
         
         // 시술 추가 함수 (그룹 카운트 업데이트 포함)
@@ -3079,7 +3126,7 @@ function generateRuleBasedRecommendation(userData) {
         ...comboA.treatments.filter(t => t.minPrice >= 40).map(t => t.name),
         ...comboB.treatments.filter(t => t.minPrice >= 40).map(t => t.name)
     ]);
-    let { combo: comboC } = createCombination('효율 중심 플랜', 0.5, 'value', expensiveFromAB);
+    let { combo: comboC } = createCombination('효율 중심 플랜', 0.5, 'budget', expensiveFromAB);
     
     // B와 C가 완전히 동일한지 체크 (시술 목록 비교)
     const getBNames = comboB.treatments.map(t => t.name).sort().join(',');
@@ -4811,11 +4858,11 @@ function displayResult(response) {
                             <h4>병원 선택 가이드</h4>
                         </div>
                         <ul class="guide-list">
-                            <li>피부과 전문의 자격증 보유 여부 확인</li>
                             <li>해당 시술 경험이 풍부한 의료진 선택</li>
-                            <li>첫 상담 시 2~3곳 비교 상담 권장</li>
                             <li>정품 장비 및 약품 사용 여부 확인</li>
                             <li>시술 전후 사진으로 결과 확인</li>
+                            <li>리뷰 확인 시 과장 광고 주의</li>
+                            <li>사후 관리 및 A/S 정책 확인</li>
                         </ul>
                     </div>
                     <div class="guide-card">
@@ -4839,7 +4886,7 @@ function displayResult(response) {
                         <ul class="guide-list">
                             <li><strong>레이저/필링:</strong> 자외선 약한 가을~겨울 최적</li>
                             <li><strong>리프팅:</strong> 계절 무관, 중요 일정 2주 전 권장</li>
-                            <li><strong>보톡스:</strong> 효과 발현까지 3~7일 소요</li>
+                            <li><strong>보톡스:</strong> 효과 발현까지 1~2주 소요</li>
                             <li><strong>필러:</strong> 붓기 감안해 일정 1주 전 시술</li>
                             <li>레티놀 사용자는 시술 2주 전 중단</li>
                         </ul>
@@ -5014,12 +5061,12 @@ function resetConsultation() {
             concerns: [],
             areas: [],
             budget: null,
-            downtime: null,
-            pain: null,
+            downtime: '상관없음',  // 기본값: 상관없어요 (추천)
+            pain: '괜찮음',  // 기본값: 잘 참아요 (추천)
             treatmentType: ['상관없음'],  // 기본값
-            duration: null,
-            priority: null,
-            frequency: null,
+            duration: '중기',  // 기본값: 6~12개월 (추천)
+            priority: '효과',  // 기본값: 효과 중시 (추천)
+            frequency: '정기',  // 기본값: 정기 관리 (추천)
             pastTreatments: []
         }
     };
@@ -5028,10 +5075,20 @@ function resetConsultation() {
     document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('selected'));
     document.querySelectorAll('.concern-chip').forEach(chip => chip.classList.remove('in-primary', 'in-secondary'));
     
-    // "상관없음" 버튼 다시 선택 상태로
-    const defaultTypeBtn = document.querySelector('.option-grid[data-field="treatmentType"] .option-btn[data-value="상관없음"]');
-    if (defaultTypeBtn) defaultTypeBtn.classList.add('selected');
-    
+    // 기본 선택 버튼들 다시 선택 상태로
+    const defaultButtons = [
+        { selector: '.option-grid[data-field="treatmentType"] .option-btn[data-value="상관없음"]' },
+        { selector: '.option-btn[data-field="downtime"][data-value="상관없음"]' },
+        { selector: '.option-btn[data-field="pain"][data-value="괜찮음"]' },
+        { selector: '.option-btn[data-field="duration"][data-value="중기"]' },
+        { selector: '.option-btn[data-field="priority"][data-value="효과"]' },
+        { selector: '.option-btn[data-field="frequency"][data-value="정기"]' }
+    ];
+    defaultButtons.forEach(({ selector }) => {
+        const btn = document.querySelector(selector);
+        if (btn) btn.classList.add('selected');
+    });
+
     // 드롭존 초기화
     ['primaryConcerns', 'secondaryConcerns'].forEach(id => {
         const zone = document.getElementById(id);
@@ -5105,85 +5162,95 @@ function setupTestimonials() {
     setInterval(showNext, 5000);
 }
 
-// Live Users Animation
+// Real Visitor Tracking (No Fake Data)
 function setupLiveUsers() {
     const liveUsersEl = document.getElementById('liveUsers');
     const todayVisitorsEl = document.getElementById('todayVisitors');
 
-    // Live users fluctuation (3-15 people, linear/smooth changes)
+    // === 실시간 접속자 (같은 브라우저 내 열린 탭 수 추적) ===
     if (liveUsersEl) {
-        // Start with random value between 3-15
-        let currentLiveUsers = 3 + Math.floor(Math.random() * 13);
-        liveUsersEl.textContent = currentLiveUsers;
+        const CHANNEL_KEY = 'skinn_live_channel';
+        const TAB_KEY = 'skinn_tabs';
+        const tabId = Date.now().toString(36) + Math.random().toString(36).substr(2);
 
-        function updateLiveUsers() {
-            // Linear change: -1, 0, or +1
-            const change = Math.floor(Math.random() * 3) - 1;
-            currentLiveUsers = Math.max(3, Math.min(15, currentLiveUsers + change));
-
-            liveUsersEl.style.transition = 'opacity 0.2s';
-            liveUsersEl.style.opacity = '0.5';
-
-            setTimeout(() => {
-                liveUsersEl.textContent = currentLiveUsers;
-                liveUsersEl.style.opacity = '1';
-            }, 200);
-
-            // Schedule next update: 4-8 seconds
-            const nextUpdate = 4000 + Math.random() * 4000;
-            setTimeout(updateLiveUsers, nextUpdate);
+        function getActiveTabs() {
+            try {
+                const tabs = JSON.parse(localStorage.getItem(TAB_KEY) || '{}');
+                const now = Date.now();
+                // 30초 이상 지난 탭은 제거 (heartbeat 없음 = 닫힘)
+                Object.keys(tabs).forEach(id => {
+                    if (now - tabs[id] > 30000) delete tabs[id];
+                });
+                return tabs;
+            } catch (e) {
+                return {};
+            }
         }
 
-        // Start after 5 seconds
-        setTimeout(updateLiveUsers, 5000);
+        function updateTabCount() {
+            const tabs = getActiveTabs();
+            tabs[tabId] = Date.now();
+            localStorage.setItem(TAB_KEY, JSON.stringify(tabs));
+            const count = Object.keys(tabs).length;
+            liveUsersEl.textContent = count;
+        }
+
+        // 초기 등록
+        updateTabCount();
+
+        // 10초마다 heartbeat
+        setInterval(updateTabCount, 10000);
+
+        // 다른 탭에서 변경 감지
+        window.addEventListener('storage', (e) => {
+            if (e.key === TAB_KEY) {
+                const tabs = getActiveTabs();
+                liveUsersEl.textContent = Object.keys(tabs).length;
+            }
+        });
+
+        // 탭 닫힐 때 제거
+        window.addEventListener('beforeunload', () => {
+            const tabs = getActiveTabs();
+            delete tabs[tabId];
+            localStorage.setItem(TAB_KEY, JSON.stringify(tabs));
+        });
     }
 
-    // Today's visitors (localStorage based, resets at midnight)
+    // === 오늘 방문자 (고유 방문만 카운트, 가짜 증가 없음) ===
     if (todayVisitorsEl) {
         const today = new Date().toDateString();
-        const storageKey = 'skinn_visitors';
-        const dateKey = 'skinn_visitors_date';
+        const countKey = 'skinn_daily_count';
+        const dateKey = 'skinn_daily_date';
+        const visitedKey = 'skinn_visited_today';
 
-        // Check if date changed - reset counter
+        // 날짜 변경시 리셋
         const storedDate = localStorage.getItem(dateKey);
-        let visitorCount = 0;
-
-        if (storedDate === today) {
-            // Same day - get existing count
-            visitorCount = parseInt(localStorage.getItem(storageKey) || '0');
-        } else {
-            // New day - reset to 0
-            visitorCount = 0;
+        if (storedDate !== today) {
             localStorage.setItem(dateKey, today);
+            localStorage.setItem(countKey, '0');
+            localStorage.removeItem(visitedKey);
         }
 
-        // Increment for this visit
-        visitorCount += 1;
-        localStorage.setItem(storageKey, visitorCount.toString());
+        // 현재 카운트
+        let visitorCount = parseInt(localStorage.getItem(countKey) || '0');
 
-        // Display with formatting
+        // 이 세션에서 처음 방문인지 확인
+        const alreadyVisited = sessionStorage.getItem(visitedKey);
+        if (!alreadyVisited) {
+            visitorCount += 1;
+            localStorage.setItem(countKey, visitorCount.toString());
+            sessionStorage.setItem(visitedKey, 'true');
+        }
+
         todayVisitorsEl.textContent = visitorCount.toLocaleString();
 
-        // Occasionally increment
-        function incrementVisitors() {
-            visitorCount += 1;
-            localStorage.setItem(storageKey, visitorCount.toString());
-
-            todayVisitorsEl.style.transition = 'opacity 0.2s';
-            todayVisitorsEl.style.opacity = '0.5';
-
-            setTimeout(() => {
-                todayVisitorsEl.textContent = visitorCount.toLocaleString();
-                todayVisitorsEl.style.opacity = '1';
-            }, 200);
-
-            // Next increment in 15-45 seconds
-            const nextUpdate = 15000 + Math.random() * 30000;
-            setTimeout(incrementVisitors, nextUpdate);
-        }
-
-        // Start after 20 seconds
-        setTimeout(incrementVisitors, 20000);
+        // 다른 탭에서 방문자 증가 감지
+        window.addEventListener('storage', (e) => {
+            if (e.key === countKey) {
+                todayVisitorsEl.textContent = parseInt(e.newValue || '0').toLocaleString();
+            }
+        });
     }
 }
 
