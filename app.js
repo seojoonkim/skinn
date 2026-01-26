@@ -860,9 +860,14 @@ function showModal(t) {
         ${t.review ? `
         <div class="modal-section">
             <div class="review-highlight">
-                <span class="review-highlight-badge">요약</span>
-                <p class="review-highlight-summary">${t.review.summary}</p>
-                <p class="review-highlight-overall">"${t.review.overall}"</p>
+                <div class="review-highlight-summary-wrap">
+                    <span class="review-highlight-badge">요약</span>
+                    <p class="review-highlight-summary">${t.review.summary}</p>
+                </div>
+                <div class="review-highlight-overall-wrap">
+                    <span class="review-highlight-badge overall">총평</span>
+                    <p class="review-highlight-overall">${t.review.overall}</p>
+                </div>
             </div>
         </div>
         ` : ''}
@@ -1656,13 +1661,13 @@ async function submitConsultation() {
     // 룰베이스 추천 (비동기 시뮬레이션)
     setTimeout(() => {
         updateProgress(2, '시술 데이터베이스를 검색하고 있어요...', 30);
-        
+
         setTimeout(() => {
             updateProgress(3, '최적의 조합을 분석하고 있어요...', 60);
-            
+
             setTimeout(() => {
                 updateProgress(4, '결과를 생성하고 있어요...', 90);
-                
+
                 setTimeout(() => {
                     stopProgressTimer();
                     try {
@@ -1672,10 +1677,10 @@ async function submitConsultation() {
                         console.error('Rule-based Error:', error);
                         displayError(error);
                     }
-                }, 300);
-            }, 400);
-        }, 400);
-    }, 300);
+                }, 750);
+            }, 1000);
+        }, 1000);
+    }, 750);
 }
 
 // ===== 시너지 메커니즘 헬퍼 함수 =====
