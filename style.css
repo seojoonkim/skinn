@@ -4858,6 +4858,7 @@ textarea.text-input.tall {
 .landing-stats-bar {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 24px;
     padding: 16px 0;
     border-top: 1px solid var(--slate-200);
