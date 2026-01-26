@@ -12843,7 +12843,7 @@ button:focus-visible {
     align-items: flex-start;
     gap: 8px;
     padding: 16px 20px;
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 14px;
@@ -12853,7 +12853,7 @@ button:focus-visible {
 }
 
 .compact-testimonial-inner:hover {
-    background: rgba(255, 255, 255, 0.96);
+    background: rgba(255, 255, 255, 0.85);
     border-color: rgba(0, 153, 214, 0.3);
     transform: translateY(-2px);
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
