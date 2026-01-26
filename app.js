@@ -63,8 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle initial hash
     handleHashChange();
 
-    // Listen for hash changes (browser back/forward)
-    window.addEventListener('popstate', handleHashChange);
+    // Listen for hash changes (browser back/forward and page refresh)
+    window.addEventListener('hashchange', handleHashChange);
 
     // Initialize landing page enhancements
     setupLandingEnhancements();

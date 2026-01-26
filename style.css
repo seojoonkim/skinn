@@ -205,10 +205,10 @@ a:focus-visible {
     --primary-900: var(--skinn-900);
 
     /* Accent Colors - Skinn Blue 기반 */
-    --accent: var(--skinn-600);
-    --accent-dark: var(--skinn-700);
+    --accent: var(--skinn-500);
+    --accent-dark: var(--skinn-500);
     --accent-light: var(--skinn-50);
-    --accent-hover: var(--skinn-700);
+    --accent-hover: var(--skinn-500);
     --accent-gradient: linear-gradient(135deg, var(--skinn-500) 0%, var(--skinn-600) 100%);
     --accent-shadow: 0 4px 20px rgba(0, 119, 182, 0.3);
 
