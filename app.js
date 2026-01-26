@@ -5036,6 +5036,26 @@ function displayResult(response) {
                 </div>
             </div>
             
+            <!-- 다음 단계 CTA -->
+            <div class="section-v2 next-step-cta">
+                <div class="cta-content">
+                    <div class="cta-icon">💬</div>
+                    <div class="cta-text">
+                        <h3>다음 단계: 전문 상담사와 1:1 상담</h3>
+                        <p>AI 분석 결과를 바탕으로 <strong>제휴 클리닉 할인 가격</strong>을 확인하고, 나에게 맞는 병원을 추천받으세요.</p>
+                        <ul class="cta-benefits">
+                            <li>✓ 동일 시술 평균 <strong>10% 이상 할인</strong></li>
+                            <li>✓ 검증된 피부과 전문의 연결</li>
+                            <li>✓ 시술 일정 및 사후 관리까지 안내</li>
+                        </ul>
+                    </div>
+                    <button class="cta-button" onclick="navigateTo('view-contact')">
+                        상담 예약하기
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
             <!-- 액션 -->
             <div class="report-actions-v2">
                 <button class="btn-secondary" onclick="resetConsultation()">다시 상담받기</button>
