@@ -2068,7 +2068,7 @@ body {
     border-radius: 20px;
     max-width: 880px;
     width: 95%;
-    max-height: 88vh;
+    max-height: 95vh;
     overflow: hidden;
     position: relative;
     animation: modalIn 0.25s ease-out;
@@ -2175,8 +2175,8 @@ body {
 
 /* 헤더 - Clean Minimal */
 .modal-header {
-    padding: 36px 40px 28px;
-    background: #ffffff;
+    padding: 20px 40px 18px;
+    background: var(--skinn-500);
     border-bottom: none;
     flex-shrink: 0;
     z-index: 1;
@@ -2186,7 +2186,7 @@ body {
 .modal-title {
     font-size: 26px;
     font-weight: 700;
-    color: var(--slate-800);
+    color: #ffffff;
     letter-spacing: -0.5px;
     margin-bottom: 12px;
     line-height: 1.3;
@@ -2201,14 +2201,14 @@ body {
 
 .modal-subtitle {
     font-size: 14px;
-    color: var(--slate-500);
+    color: rgba(255, 255, 255, 0.9);
     font-weight: 500;
 }
 
 .modal-badge {
     display: inline-block;
     padding: 6px 14px;
-    background: var(--slate-800);
+    background: rgba(255, 255, 255, 0.25);
     color: #ffffff;
     font-size: 11px;
     font-weight: 600;
@@ -3190,7 +3190,7 @@ body {
     }
 
     .modal-header {
-        padding: 24px 20px 20px;
+        padding: 16px 20px 14px;
         position: sticky;
         top: 0;
         z-index: 10;
