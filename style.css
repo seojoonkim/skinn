@@ -4896,7 +4896,6 @@ textarea.text-input.tall {
     flex-direction: column;
     gap: 10px;
     align-self: center;
-    position: relative;
 }
 
 /* Hero Image Section */
