@@ -2065,7 +2065,7 @@ body {
 
 .modal {
     background: white;
-    border-radius: 20px;
+    border-radius: 12px;
     max-width: 880px;
     width: 95%;
     max-height: 95vh;
@@ -2175,7 +2175,7 @@ body {
 
 /* 헤더 - Clean Minimal */
 .modal-header {
-    padding: 20px 40px 18px;
+    padding: 14px 40px 12px;
     background: var(--skinn-500);
     border-bottom: none;
     flex-shrink: 0;
@@ -2256,8 +2256,8 @@ body {
 .review-highlight-summary {
     font-size: 15px;
     line-height: 1.8;
-    color: var(--slate-700);
-    font-weight: 500;
+    color: var(--skinn-500);
+    font-weight: 700;
     margin: 0 0 16px 0;
 }
 
@@ -3190,7 +3190,7 @@ body {
     }
 
     .modal-header {
-        padding: 16px 20px 14px;
+        padding: 12px 20px 10px;
         position: sticky;
         top: 0;
         z-index: 10;
