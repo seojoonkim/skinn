@@ -4412,7 +4412,7 @@ textarea.text-input.tall {
 }
 
 .logo-main {
-    font-size: 19px;
+    font-size: 22px;
     font-weight: 800;
     background: linear-gradient(135deg, var(--skinn-500) 0%, var(--skinn-400) 100%);
     -webkit-text-fill-color: transparent;
@@ -13507,7 +13507,7 @@ button:focus-visible {
     }
 
     .logo-main {
-        font-size: 18px;
+        font-size: 21px;
         order: 1;
     }
 
@@ -13545,7 +13545,7 @@ button:focus-visible {
     }
 
     .logo-main {
-        font-size: 17px;
+        font-size: 20px;
     }
 
     .nav-tab {
