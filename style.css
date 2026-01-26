@@ -4705,7 +4705,7 @@ textarea.text-input.tall {
     background: var(--slate-100);
     border: none;
     border-radius: 8px;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
     color: var(--slate-600);
     margin-bottom: 12px;
@@ -5393,7 +5393,7 @@ textarea.text-input.tall {
         display: inline-flex;
         margin-bottom: 12px;
         padding: 6px 12px;
-        font-size: 10px;
+        font-size: 11px;
         background: linear-gradient(135deg, var(--skinn-50) 0%, #e0f4fc 100%);
         color: var(--skinn-500);
         border: 1px solid rgba(0, 153, 214, 0.15);
@@ -13299,7 +13299,7 @@ button:focus-visible {
     }
 
     .mobile-hero-text .landing-badge {
-        font-size: 9px;
+        font-size: 10px;
         padding: 5px 10px;
         margin-bottom: 10px;
     }
