@@ -7755,7 +7755,188 @@ function searchTreatments(query) {
 
 console.log("DB_EXTENDED 로드 완료:", DB_EXTENDED.treatments.length, "개 시술");
 
+// ========== FAQ 템플릿 및 생성 함수 ==========
+
+const FAQ_TEMPLATES = {
+  // 카테고리별 공통 FAQ
+  "리프팅/타이트닝": [
+    { q: "효과는 언제부터 보이나요?", a: "시술 후 1~2주 내 초기 효과, 1~3개월에 걸쳐 콜라겐 재생으로 최대 효과" },
+    { q: "유지 기간은 얼마나 되나요?", a: "개인차가 있으나 보통 6개월~2년, 관리에 따라 연장 가능" },
+    { q: "처짐이 심해도 효과 있나요?", a: "경미~중등도 처짐에 효과적, 심한 처짐은 실리프팅이나 수술 고려" }
+  ],
+  "스킨부스터": [
+    { q: "얼마나 자주 맞아야 하나요?", a: "초기 2~4주 간격 3~4회, 이후 2~3개월 유지 시술" },
+    { q: "다른 시술과 병행 가능한가요?", a: "대부분 병행 가능, 레이저/보톡스와 2주 간격 권장" },
+    { q: "효과가 바로 보이나요?", a: "즉시 수분감 개선, 광채는 2~4주 후 본격적으로" }
+  ],
+  "주름/보톡스": [
+    { q: "효과는 언제 나타나나요?", a: "3~7일 후 효과 시작, 2주 후 최대 효과" },
+    { q: "얼마나 자주 맞아야 하나요?", a: "보통 3~6개월 간격, 반복 시 효과 기간 늘어남" },
+    { q: "표정이 어색해지지 않나요?", a: "적정량 시술 시 자연스러움, 과다 시술 시 뻣뻣할 수 있음" }
+  ],
+  "필러/볼륨": [
+    { q: "얼마나 오래 유지되나요?", a: "부위와 제품에 따라 6개월~2년, HA필러는 녹일 수 있음" },
+    { q: "멍이 많이 드나요?", a: "개인차 있으나 보통 1주 내 소실, 중요 일정 전 여유 권장" },
+    { q: "부작용은 없나요?", a: "일시적 붓기/멍 흔함, 드물게 혈관 폐색 위험으로 숙련된 의사 중요" }
+  ],
+  "색소/미백": [
+    { q: "몇 회 시술해야 효과 보나요?", a: "보통 3~5회 이상, 색소 깊이에 따라 다름" },
+    { q: "시술 후 바로 외출 가능한가요?", a: "가능하나 자외선 차단 필수, 시술 당일 약간 붉을 수 있음" },
+    { q: "재발하지 않나요?", a: "자외선/호르몬에 따라 재발 가능, 지속적 관리와 선크림 중요" }
+  ],
+  "흉터/모공": [
+    { q: "완전히 없어지나요?", a: "크게 개선되나 100% 제거는 어려움, 70~80% 호전 기대" },
+    { q: "다운타임이 길나요?", a: "시술 강도에 따라 3일~2주, 약한 시술은 당일 일상 가능" },
+    { q: "몇 번 받아야 하나요?", a: "보통 3~5회 이상, 심한 흉터는 10회 이상 필요할 수 있음" }
+  ],
+  "바디/지방": [
+    { q: "살이 다시 찌지 않나요?", a: "지방세포 감소는 영구적, 남은 세포가 커질 수 있어 관리 필요" },
+    { q: "운동/다이어트로 안 되는데 효과 있나요?", a: "부분 지방 감소에 효과적, 전체 체중 감량과 병행 권장" },
+    { q: "아프나요?", a: "시술 종류에 따라 다름, 비침습은 불편감 적음, 주사는 약간 통증" }
+  ],
+  "제모": [
+    { q: "영구 제모인가요?", a: "80~90% 영구 감소, 일부 잔털 유지 시술 필요할 수 있음" },
+    { q: "몇 회 받아야 하나요?", a: "부위에 따라 5~10회, 털 주기에 맞춰 4~6주 간격" },
+    { q: "여름에 받아도 되나요?", a: "가능하나 시술 전후 2주 자외선 노출 최소화" }
+  ],
+  "탈모": [
+    { q: "효과를 보려면 얼마나 걸리나요?", a: "최소 3~6개월 꾸준히, 1년 이상 지속 치료 권장" },
+    { q: "모발 이식과 뭐가 다른가요?", a: "비수술로 기존 모발 강화, 이식은 새 모발 심는 수술" },
+    { q: "계속 받아야 하나요?", a: "탈모는 진행성이므로 유지 치료 권장" }
+  ],
+  "스킨케어": [
+    { q: "얼마나 자주 받아야 하나요?", a: "피부 상태에 따라 2~4주 간격, 유지는 월 1회" },
+    { q: "집에서 관리와 뭐가 다른가요?", a: "전문 장비와 고농도 성분, 더 깊은 층까지 작용" },
+    { q: "민감성 피부도 가능한가요?", a: "대부분 가능, 자극 적은 프로그램 선택" }
+  ]
+};
+
+// 강도별 추가 FAQ
+const INTENSITY_FAQ = {
+  gentle: [
+    { q: "첫 시술로 적합한가요?", a: "네, 부담 없이 시작하기 좋은 입문 시술입니다" }
+  ],
+  moderate: [
+    { q: "통증은 어느 정도인가요?", a: "중간 정도, 마취크림 사용 시 충분히 견딜 수 있음" }
+  ],
+  aggressive: [
+    { q: "마취가 필요한가요?", a: "마취크림 필수, 경우에 따라 수면마취 권장" },
+    { q: "회복 기간은 얼마나 되나요?", a: "시술에 따라 3일~2주, 중요 일정 전 충분한 여유 필요" }
+  ]
+};
+
+// 가격대별 추가 FAQ
+const PRICE_FAQ = {
+  premium: { q: "왜 이렇게 비싼가요?", a: "FDA 승인 정품 장비, 숙련된 시술, 높은 효과와 안전성" },
+  budget: { q: "저렴한데 효과 있나요?", a: "충분히 효과적, 가성비 좋은 선택지" }
+};
+
+// 시술별 FAQ 생성 함수
+function generateFAQ(treatment) {
+  const faqs = [];
+
+  // 1. 카테고리 기본 FAQ
+  const categoryFaq = FAQ_TEMPLATES[treatment.category];
+  if (categoryFaq) {
+    faqs.push(...categoryFaq);
+  }
+
+  // 2. 강도별 FAQ
+  if (treatment.intensity && INTENSITY_FAQ[treatment.intensity.category]) {
+    faqs.push(...INTENSITY_FAQ[treatment.intensity.category]);
+  }
+
+  // 3. 가격대 FAQ (100만원 이상이면 premium)
+  if (treatment.pricing && treatment.pricing.average) {
+    const avgPrice = parseInt(treatment.pricing.average.replace(/[^0-9]/g, ''));
+    if (avgPrice >= 100) {
+      faqs.push(PRICE_FAQ.premium);
+    } else if (avgPrice <= 20) {
+      faqs.push(PRICE_FAQ.budget);
+    }
+  }
+
+  // 4. 시술 고유 정보 기반 FAQ
+  if (treatment.procedure) {
+    if (treatment.procedure.sessions && treatment.procedure.sessions !== "1회") {
+      faqs.push({
+        q: "몇 회 시술이 필요한가요?",
+        a: `권장 ${treatment.procedure.sessions}, ${treatment.procedure.interval || '의사와 상담'} 간격`
+      });
+    }
+    if (treatment.procedure.anesthesia) {
+      faqs.push({
+        q: "마취는 어떻게 하나요?",
+        a: treatment.procedure.anesthesia
+      });
+    }
+  }
+
+  // 5. 효과 관련 FAQ
+  if (treatment.effects) {
+    if (treatment.effects.onsetTime) {
+      faqs.push({
+        q: "효과는 언제부터 나타나나요?",
+        a: treatment.effects.onsetTime
+      });
+    }
+    if (treatment.effects.duration) {
+      faqs.push({
+        q: "효과는 얼마나 지속되나요?",
+        a: `평균 ${treatment.effects.duration}, 개인차와 관리에 따라 다름`
+      });
+    }
+  }
+
+  // 6. 부작용 관련 FAQ
+  if (treatment.recovery && treatment.recovery.commonSideEffects) {
+    faqs.push({
+      q: "부작용은 없나요?",
+      a: `일시적으로 ${treatment.recovery.commonSideEffects.join(', ')} 가능, 대부분 자연 소실`
+    });
+  }
+
+  // 7. 연령 관련 FAQ
+  if (treatment.ageRange && treatment.ageRange.youngWarning) {
+    faqs.push({
+      q: "젊은 나이에 받아도 되나요?",
+      a: treatment.ageRange.youngWarning
+    });
+  }
+
+  // 중복 제거 (질문 기준)
+  const uniqueFaqs = [];
+  const seenQuestions = new Set();
+  for (const faq of faqs) {
+    if (!seenQuestions.has(faq.q)) {
+      seenQuestions.add(faq.q);
+      uniqueFaqs.push(faq);
+    }
+  }
+
+  return uniqueFaqs.slice(0, 8); // 최대 8개
+}
+
+// 모든 시술에 FAQ 추가
+function enrichTreatmentsWithFAQ() {
+  DB_EXTENDED.treatments.forEach(treatment => {
+    treatment.faq = generateFAQ(treatment);
+  });
+  console.log("FAQ 추가 완료: 모든 시술에 FAQ 생성됨");
+}
+
+// 자동 실행
+enrichTreatmentsWithFAQ();
+
+// 특정 시술 FAQ 조회
+function getTreatmentFAQ(treatmentId) {
+  const treatment = getTreatmentById(treatmentId);
+  return treatment ? treatment.faq : null;
+}
+
+console.log("FAQ 시스템 로드 완료");
+
 // Export for Node.js
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { DB_EXTENDED, getTreatmentById, getTreatmentsByCategory, getTreatmentsByTag, searchTreatments };
+  module.exports = { DB_EXTENDED, getTreatmentById, getTreatmentsByCategory, getTreatmentsByTag, searchTreatments, getTreatmentFAQ, generateFAQ };
 }
