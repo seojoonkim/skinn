@@ -529,8 +529,6 @@ body {
     font-weight: 600;
     text-decoration: none;
     transition: all 0.2s ease;
-    flex: 1;
-    min-width: 80px;
 }
 
 .contact-btn svg {
