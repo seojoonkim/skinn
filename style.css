@@ -3135,11 +3135,11 @@ body {
     }
 
     .logo {
-        font-size: 18px;
+        font-size: 19px;
     }
 
     .db-count {
-        font-size: 10px;
+        font-size: 11px;
         padding: 3px 8px;
     }
 
@@ -3158,7 +3158,7 @@ body {
     .view-tab {
         flex: 1;
         padding: 6px 4px;
-        font-size: 11px;
+        font-size: 12px;
         border-radius: 0;
         white-space: nowrap;
         border-right: 1px solid #e2e8f0;
@@ -5768,7 +5768,7 @@ textarea.text-input.tall {
         display: inline-flex;
         margin-bottom: 12px;
         padding: 6px 14px;
-        font-size: 12px;
+        font-size: 13px;
         background: var(--slate-100);
         color: var(--slate-600);
         border: none;
@@ -5785,7 +5785,7 @@ textarea.text-input.tall {
     }
 
     .mobile-hero-text .landing-title {
-        font-size: 38px;
+        font-size: 39px;
         /* Balanced size */
         line-height: 1.25;
         /* Tighter leading */
@@ -5803,9 +5803,9 @@ textarea.text-input.tall {
     }
 
     .mobile-hero-img {
-        width: 150px;
+        width: 173px;
         /* Slightly refined for balance */
-        height: 190px;
+        height: 219px;
         flex-shrink: 0;
         border-radius: 20px;
         overflow: hidden;
@@ -5827,7 +5827,7 @@ textarea.text-input.tall {
        SECTION 2: VALUE PROPOSITION
        ======================================== */
     .landing-subtitle {
-        font-size: 15px;
+        font-size: 16px;
         line-height: 1.6;
         /* improved readability */
         margin-bottom: 24px;
@@ -14113,25 +14113,25 @@ button:focus-visible {
     }
 
     .mobile-hero-text .landing-title {
-        font-size: 28px;
+        font-size: 32px;
         line-height: 1.2;
     }
 
     .mobile-hero-text .landing-badge {
-        font-size: 10px;
+        font-size: 12px;
         padding: 5px 10px;
         margin-bottom: 10px;
     }
 
     .mobile-hero-img {
-        width: 105px;
-        height: 130px;
+        width: 133px;
+        height: 165px;
         border-radius: 16px;
     }
 
     /* Subtitle */
     .landing-subtitle {
-        font-size: 13px;
+        font-size: 15px;
         line-height: 1.65;
         margin-bottom: 20px;
     }
@@ -14139,13 +14139,13 @@ button:focus-visible {
     /* CTA */
     .cta-button-main {
         padding: 16px 20px;
-        font-size: 15px;
+        font-size: 16px;
         border-radius: 12px;
         margin-bottom: 20px;
     }
 
     .cta-button-main::after {
-        font-size: 16px;
+        font-size: 17px;
     }
 
     /* Stats */
@@ -14156,11 +14156,11 @@ button:focus-visible {
     }
 
     .landing-stats-bar .stat-num {
-        font-size: 16px;
+        font-size: 17px;
     }
 
     .landing-stats-bar .stat-label {
-        font-size: 9px;
+        font-size: 11px;
     }
 
     .landing-stats-bar .stat-divider {
@@ -14182,21 +14182,21 @@ button:focus-visible {
     }
 
     .badge-label {
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .badge-sub {
-        font-size: 8px;
+        font-size: 10px;
     }
 
     .badge-icon-wrap {
-        width: 24px;
-        height: 24px;
+        width: 36px;
+        height: 36px;
     }
 
     .badge-icon-wrap svg {
-        width: 16px;
-        height: 16px;
+        width: 24px;
+        height: 24px;
     }
 
     /* Cards */
@@ -14222,17 +14222,17 @@ button:focus-visible {
     }
 
     .landing-card-row .card-title {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .landing-card-row .card-desc-small {
-        font-size: 11px;
+        font-size: 12px;
     }
 
     /* Footer */
     .landing-footer-bar {
         padding: 8px 16px;
-        font-size: 11px;
+        font-size: 12px;
         margin-top: 8px;
         border-radius: 10px;
     }
@@ -14256,11 +14256,11 @@ button:focus-visible {
     }
 
     .logo {
-        font-size: 16px;
+        font-size: 17px;
     }
 
     .db-count {
-        font-size: 10px;
+        font-size: 11px;
         padding: 3px 8px;
     }
 
@@ -14282,7 +14282,7 @@ button:focus-visible {
     }
 
     .tab-label {
-        font-size: 10px;
+        font-size: 11px;
     }
 
     .tabs-bg-slider {
@@ -14396,12 +14396,12 @@ button:focus-visible {
     }
 
     .logo-main {
-        font-size: 20px;
+        font-size: 22px;
     }
 
     .nav-tab {
         padding: 5px 6px;
-        font-size: 11px;
+        font-size: 13px;
     }
 
     .header-actions {
@@ -14411,6 +14411,6 @@ button:focus-visible {
     .auth-btn,
     .lang-toggle {
         padding: 4px 8px;
-        font-size: 10px;
+        font-size: 12px;
     }
 }
