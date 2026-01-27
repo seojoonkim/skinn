@@ -60,11 +60,11 @@ document.addEventListener('DOMContentLoaded', () => {
     setupModal();
     setupConsultation();
 
-    // Handle initial hash
-    handleHashChange();
+    // Handle initial hash (pass true for initial load to restore saved state)
+    handleHashChange(true);
 
     // Listen for hash changes (browser back/forward and page refresh)
-    window.addEventListener('hashchange', handleHashChange);
+    window.addEventListener('hashchange', () => handleHashChange(false));
 
     // Initialize landing page enhancements
     setupLandingEnhancements();
@@ -114,9 +114,16 @@ function setupLangDropdown() {
 }
 
 // ===== Hash-based Routing =====
-function handleHashChange() {
+function handleHashChange(isInitial = false) {
     const hash = window.location.hash.slice(1); // Remove '#'
     const validViews = ['consult', 'concern', 'filter', 'table', 'contact'];
+
+    // 초기 로드 시 저장된 상담 상태 복원 시도
+    if (isInitial && (hash === 'consult' || hash === '')) {
+        if (restoreConsultState()) {
+            return; // 복원 성공 시 다른 처리 안함
+        }
+    }
 
     if (hash && validViews.includes(hash)) {
         switchToView(hash, false);
@@ -1180,6 +1187,142 @@ let consultState = {
     }
 };
 
+// ===== Consultation State Persistence =====
+const CONSULT_STORAGE_KEY = 'skinn_consult_state';
+const CONSULT_REPORT_KEY = 'skinn_consult_report';
+
+function saveConsultState() {
+    const stateToSave = {
+        currentStep: consultState.currentStep,
+        data: consultState.data,
+        timestamp: Date.now()
+    };
+    localStorage.setItem(CONSULT_STORAGE_KEY, JSON.stringify(stateToSave));
+}
+
+function saveConsultReport(reportHTML) {
+    const reportToSave = {
+        html: reportHTML,
+        timestamp: Date.now()
+    };
+    localStorage.setItem(CONSULT_REPORT_KEY, JSON.stringify(reportToSave));
+}
+
+function clearConsultState() {
+    localStorage.removeItem(CONSULT_STORAGE_KEY);
+    localStorage.removeItem(CONSULT_REPORT_KEY);
+}
+
+function restoreConsultState() {
+    // 먼저 보고서가 있는지 확인
+    const savedReport = localStorage.getItem(CONSULT_REPORT_KEY);
+    if (savedReport) {
+        try {
+            const reportData = JSON.parse(savedReport);
+            // 24시간 이내의 보고서만 복원
+            if (Date.now() - reportData.timestamp < 24 * 60 * 60 * 1000) {
+                document.getElementById('consultResult').innerHTML = reportData.html;
+                document.getElementById('consultWizard').classList.add('hidden');
+                document.getElementById('consultLoading').classList.add('hidden');
+                document.getElementById('consultResult').classList.remove('hidden');
+                switchToView('consult', false);
+                return true;
+            }
+        } catch (e) {
+            console.error('Failed to restore report:', e);
+        }
+    }
+
+    // 상담 진행 상태 확인
+    const savedState = localStorage.getItem(CONSULT_STORAGE_KEY);
+    if (savedState) {
+        try {
+            const stateData = JSON.parse(savedState);
+            // 24시간 이내의 상태만 복원
+            if (Date.now() - stateData.timestamp < 24 * 60 * 60 * 1000) {
+                consultState.currentStep = stateData.currentStep;
+                consultState.data = { ...consultState.data, ...stateData.data };
+
+                // UI 복원
+                restoreConsultUI();
+                goToStep(consultState.currentStep);
+                switchToView('consult', false);
+                return true;
+            }
+        } catch (e) {
+            console.error('Failed to restore consult state:', e);
+        }
+    }
+    return false;
+}
+
+function restoreConsultUI() {
+    // 단일 선택 버튼 복원
+    Object.keys(consultState.data).forEach(field => {
+        const value = consultState.data[field];
+        if (typeof value === 'string' && value) {
+            const btn = document.querySelector(`.option-btn[data-field="${field}"][data-value="${value}"]`);
+            if (btn) {
+                const grid = btn.closest('.option-grid');
+                if (grid) {
+                    grid.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+                }
+                btn.classList.add('selected');
+            }
+        }
+    });
+
+    // 다중 선택 버튼 복원 (areas, treatmentType, pastTreatments)
+    ['areas', 'treatmentType', 'pastTreatments'].forEach(field => {
+        const values = consultState.data[field];
+        if (Array.isArray(values)) {
+            values.forEach(value => {
+                const btns = document.querySelectorAll(`.option-grid.multi-select[data-field="${field}"] .option-btn[data-value="${value}"]`);
+                btns.forEach(btn => btn.classList.add('selected'));
+            });
+        }
+    });
+
+    // 고민 칩 복원
+    if (consultState.data.primaryConcerns?.length > 0) {
+        const primaryZone = document.querySelector('.priority-drop-zone[data-priority="primary"]');
+        if (primaryZone) {
+            consultState.data.primaryConcerns.forEach(concern => {
+                const chip = document.querySelector(`.concern-chip[data-value="${concern}"]`);
+                if (chip && !primaryZone.contains(chip)) {
+                    const clone = chip.cloneNode(true);
+                    clone.classList.add('in-primary');
+                    primaryZone.appendChild(clone);
+                    chip.classList.add('in-primary');
+                }
+            });
+        }
+    }
+
+    if (consultState.data.secondaryConcerns?.length > 0) {
+        const secondaryZone = document.querySelector('.priority-drop-zone[data-priority="secondary"]');
+        if (secondaryZone) {
+            consultState.data.secondaryConcerns.forEach(concern => {
+                const chip = document.querySelector(`.concern-chip[data-value="${concern}"]`);
+                if (chip && !secondaryZone.contains(chip)) {
+                    const clone = chip.cloneNode(true);
+                    clone.classList.add('in-secondary');
+                    secondaryZone.appendChild(clone);
+                    chip.classList.add('in-secondary');
+                }
+            });
+        }
+    }
+
+    // 예산 입력 복원
+    if (consultState.data.budget) {
+        const budgetInput = document.getElementById('budgetInput');
+        if (budgetInput) {
+            budgetInput.value = consultState.data.budget;
+        }
+    }
+}
+
 function setupConsultation() {
     // Priority concern chips (클릭으로 추가/제거)
     setupPriorityConcerns();
@@ -1189,7 +1332,7 @@ function setupConsultation() {
         btn.addEventListener('click', () => {
             const field = btn.dataset.field;
             const value = btn.dataset.value;
-            
+
             const grid = btn.closest('.option-grid');
             if (grid) {
                 grid.querySelectorAll('.option-btn').forEach(b => {
@@ -1198,6 +1341,7 @@ function setupConsultation() {
             }
             btn.classList.add('selected');
             consultState.data[field] = value;
+            saveConsultState();
         });
     });
     
@@ -1253,10 +1397,11 @@ function setupConsultation() {
                     });
                     consultState.data[field] = gridSelectedValues;
                 }
+                saveConsultState();
             });
         });
     });
-    
+
     // Budget presets
     document.querySelectorAll('.preset-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -1267,15 +1412,17 @@ function setupConsultation() {
                 budgetInput.value = btn.dataset.amount;
             }
             consultState.data.budget = parseInt(btn.dataset.amount);
+            saveConsultState();
         });
     });
-    
+
     // Budget input
     const budgetInput = document.getElementById('budgetInput');
     if (budgetInput) {
         budgetInput.addEventListener('input', (e) => {
             consultState.data.budget = parseInt(e.target.value) || null;
             document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('selected'));
+            saveConsultState();
         });
     }
     
@@ -1423,6 +1570,7 @@ function removeFromPriority(value) {
 
 function updateConcernsArray() {
     consultState.data.concerns = [...consultState.data.primaryConcerns, ...consultState.data.secondaryConcerns];
+    saveConsultState();
 }
 
 // 드래그 앤 드롭 핸들러
@@ -1513,6 +1661,9 @@ function goToStep(step) {
         document.getElementById('nextBtn').classList.remove('hidden');
         document.getElementById('submitBtn').classList.add('hidden');
     }
+
+    // 상태 저장
+    saveConsultState();
 }
 
 function validateCurrentStep() {
@@ -5072,8 +5223,14 @@ function displayResult(response) {
     `;
     
     document.getElementById('consultResult').innerHTML = html;
+
+    // 보고서 저장
+    saveConsultReport(html);
 }
 function resetConsultation() {
+    // 저장된 상태 삭제
+    clearConsultState();
+
     consultState = {
         currentStep: 1,
         totalSteps: 7,

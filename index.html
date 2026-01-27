@@ -124,6 +124,44 @@
                             <span class="cta-pulse" aria-hidden="true"></span>
                         </button>
 
+                        <!-- Mobile: 두 버튼 (CTA 아래) -->
+                        <div class="landing-card-row mobile-only">
+                            <div class="landing-card horizontal" role="button" tabindex="0" onclick="switchToView('concern')" onkeydown="if(event.key==='Enter'||event.key===' ')switchToView('concern')">
+                                <span class="card-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="11" cy="11" r="8"/>
+                                        <path d="M21 21l-4.35-4.35"/>
+                                    </svg>
+                                </span>
+                                <div class="card-content">
+                                    <span class="card-title">고민별 시술 찾기</span>
+                                </div>
+                                <span class="card-arrow" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M9 18l6-6-6-6"/>
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="landing-card horizontal" role="button" tabindex="0" onclick="switchToView('filter')" onkeydown="if(event.key==='Enter'||event.key===' ')switchToView('filter')">
+                                <span class="card-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="7" height="7" rx="1"/>
+                                        <rect x="14" y="3" width="7" height="7" rx="1"/>
+                                        <rect x="3" y="14" width="7" height="7" rx="1"/>
+                                        <rect x="14" y="14" width="7" height="7" rx="1"/>
+                                    </svg>
+                                </span>
+                                <div class="card-content">
+                                    <span class="card-title">전체 시술 검색</span>
+                                </div>
+                                <span class="card-arrow" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M9 18l6-6-6-6"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+
                         <div class="landing-features">
                             <div class="feature-item">
                                 <span class="feature-icon">
@@ -147,7 +185,7 @@
                                         <polyline points="20 6 9 17 4 12"/>
                                     </svg>
                                 </span>
-                                <span class="feature-text">피부과 전문의 검증 정보</span>
+                                <span class="feature-text">실제 후기 기반 정보</span>
                             </div>
                         </div>
 
@@ -246,7 +284,7 @@
                             </div>
                         </div>
 
-                        <div class="landing-card-row">
+                        <div class="landing-card-row desktop-only">
                             <div class="landing-card horizontal" role="button" tabindex="0" onclick="switchToView('concern')" onkeydown="if(event.key==='Enter'||event.key===' ')switchToView('concern')">
                                 <span class="card-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
